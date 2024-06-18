@@ -1,0 +1,583 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>java学习路线 | znxs</title><meta name="author" content="znxs"><meta name="copyright" content="znxs"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="java的学习路线，现阶段还未完成，敬请期待">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java学习路线">
+<meta property="og:url" content="http://znxs.vip/2023/06/17/java%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/index.html">
+<meta property="og:site_name" content="znxs">
+<meta property="og:description" content="java的学习路线，现阶段还未完成，敬请期待">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.znxs.vip/znxs/961638.png">
+<meta property="article:published_time" content="2023-06-17T13:28:36.000Z">
+<meta property="article:modified_time" content="2024-06-17T13:29:37.039Z">
+<meta property="article:author" content="znxs">
+<meta property="article:tag" content="java">
+<meta property="article:tag" content="学习路线">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img.znxs.vip/znxs/961638.png"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="http://znxs.vip/2023/06/17/java%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.14.0-b3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.35/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>(()=>{
+      const saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+      
+      window.btf = {
+        saveToLocal: saveToLocal,
+        getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+          const script = document.createElement('script')
+          script.src = url
+          script.async = true
+          script.onerror = reject
+          script.onload = script.onreadystatechange = function() {
+            const loadState = this.readyState
+            if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+            script.onload = script.onreadystatechange = null
+            resolve()
+          }
+
+          Object.keys(attr).forEach(key => {
+            script.setAttribute(key, attr[key])
+          })
+
+          document.head.appendChild(script)
+        }),
+
+        getCSS: (url, id = false) => new Promise((resolve, reject) => {
+          const link = document.createElement('link')
+          link.rel = 'stylesheet'
+          link.href = url
+          if (id) link.id = id
+          link.onerror = reject
+          link.onload = link.onreadystatechange = function() {
+            const loadState = this.readyState
+            if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+            link.onload = link.onreadystatechange = null
+            resolve()
+          }
+          document.head.appendChild(link)
+        }),
+
+        addGlobalFn: (key, fn, name = false, parent = window) => {
+          const pjaxEnable = false
+          if (!pjaxEnable && key.startsWith('pjax')) return
+
+          const globalFn = parent.globalFn || {}
+          const keyObj = globalFn[key] || {}
+    
+          if (name && keyObj[name]) return
+    
+          name = name || Object.keys(keyObj).length
+          keyObj[name] = fn
+          globalFn[key] = keyObj
+          parent.globalFn = globalFn
+        }
+      }
+    
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+      
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })()</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":230,"highlightFullpage":true,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":500,"languages":{"author":"作者: znxs","link":"链接: ","source":"来源: znxs","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'java学习路线',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-06-17 21:29:37'
+}</script><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiper.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiperstyle.css"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://img.znxs.vip/znxs/avatar_%E7%A5%9E%E9%87%8C.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">26</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://img.znxs.vip/znxs/961638.png')"><nav id="nav"><span id="blog-info"><a href="/" title="znxs"><img class="site-icon" src="/img/favicon.ico" alt="Logo"/><span class="site-name">znxs</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">java学习路线</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-06-17T13:28:36.000Z" title="发表于 2023-06-17 21:28:36">2023-06-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-06-17T13:29:37.039Z" title="更新于 2024-06-17 21:29:37">2024-06-17</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="java学习路线"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><blockquote>
+<p>如果访问很慢就是用外网访问，Github是这样的🐶</p>
+</blockquote>
+<h1 id="java后端开发"><a href="#java后端开发" class="headerlink" title="java后端开发"></a>java后端开发</h1><h1 id="基础编程"><a href="#基础编程" class="headerlink" title="基础编程"></a>基础编程</h1><h2 id="java语言对"><a href="#java语言对" class="headerlink" title="java语言对"></a>java语言对</h2><h3 id="语言基础"><a href="#语言基础" class="headerlink" title="语言基础"></a>语言基础</h3><ul>
+<li>基础语法👌</li>
+<li>面向对象👌</li>
+<li>接口👌</li>
+<li>容器</li>
+<li>异常</li>
+<li>泛型👌</li>
+<li>反射</li>
+<li>注解👌</li>
+<li>I&#x2F;O</li>
+<li>图形化</li>
+</ul>
+<h3 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h3><ul>
+<li>类加载机制</li>
+<li>字节码执行机制</li>
+<li>JVM内存模型</li>
+<li>GC垃圾回收机制</li>
+<li>JVM性能监控与故障定位</li>
+<li>JVM调优</li>
+</ul>
+<h3 id="并发-多线程"><a href="#并发-多线程" class="headerlink" title="并发&#x2F;多线程"></a>并发&#x2F;多线程</h3><ul>
+<li>并发编程基础</li>
+<li>线程池</li>
+<li>锁</li>
+<li>并发容器</li>
+<li>原子类</li>
+<li>JUC并发工具类</li>
+</ul>
+<h2 id="数据结构和算法"><a href="#数据结构和算法" class="headerlink" title="数据结构和算法"></a>数据结构和算法</h2><h3 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h3><ul>
+<li>字符串👌</li>
+<li>数组👌</li>
+<li>链表👌</li>
+<li>二叉树👌</li>
+<li>队列、堆、栈👌</li>
+<li>哈希👌</li>
+</ul>
+<h3 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h3><ul>
+<li>查找👌</li>
+<li>排序👌</li>
+<li>贪心👌</li>
+<li>分治👌</li>
+<li>动态规划👌</li>
+<li>回溯👌</li>
+</ul>
+<h2 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h2><ul>
+<li>ARP协议</li>
+<li>IP&#x2F;ICMP协议</li>
+<li>TCP&#x2F;UDP协议</li>
+<li>DNS&#x2F;HTTP&#x2F;HTTPS协议</li>
+<li>Session&#x2F;Cookie</li>
+</ul>
+<h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><ul>
+<li>SQL语句优化</li>
+<li>事务以及隔离级别</li>
+<li>索引</li>
+<li>锁</li>
+</ul>
+<h2 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h2><ul>
+<li>进程&#x2F;线程👌</li>
+<li>并发&#x2F;锁</li>
+<li>内存管理和调度</li>
+<li>I&#x2F;O原理</li>
+</ul>
+<h2 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h2><ul>
+<li>单例👌</li>
+<li>工厂👌</li>
+<li>代理👌</li>
+<li>策略👌</li>
+<li>模板方法👌</li>
+<li>观察者👌</li>
+<li>适配器👌</li>
+<li>责任链👌</li>
+<li>建造者👌</li>
+</ul>
+<h1 id="研发工具"><a href="#研发工具" class="headerlink" title="研发工具"></a>研发工具</h1><h2 id="集成开发环境"><a href="#集成开发环境" class="headerlink" title="集成开发环境"></a>集成开发环境</h2><ul>
+<li>IDEA👌</li>
+<li>VS Code👌</li>
+</ul>
+<h2 id="Linux系统"><a href="#Linux系统" class="headerlink" title="Linux系统"></a>Linux系统</h2><ul>
+<li>Linux常用命令👌</li>
+<li>基本Shell脚本</li>
+</ul>
+<h2 id="代码管理工具"><a href="#代码管理工具" class="headerlink" title="代码管理工具"></a>代码管理工具</h2><ul>
+<li>Git👌</li>
+<li>SVN</li>
+</ul>
+<h2 id="项目管理-构建工具"><a href="#项目管理-构建工具" class="headerlink" title="项目管理&#x2F;构建工具"></a>项目管理&#x2F;构建工具</h2><ul>
+<li>maven👌</li>
+</ul>
+<h1 id="后端框架"><a href="#后端框架" class="headerlink" title="后端框架"></a>后端框架</h1><h2 id="Spring全家桶"><a href="#Spring全家桶" class="headerlink" title="Spring全家桶"></a>Spring全家桶</h2><ul>
+<li><h3 id="Spring-Farmwork"><a href="#Spring-Farmwork" class="headerlink" title="Spring Farmwork"></a>Spring Farmwork</h3><ul>
+<li>IoC👌</li>
+<li>AOP👌</li>
+</ul>
+</li>
+<li><h3 id="Spring-MVC"><a href="#Spring-MVC" class="headerlink" title="Spring MVC"></a>Spring MVC</h3></li>
+<li><h3 id="Spring-Boot"><a href="#Spring-Boot" class="headerlink" title="Spring Boot"></a>Spring Boot</h3><ul>
+<li>自动配置👌</li>
+<li>整合web👌</li>
+<li>整合数据库（事务问题）👌</li>
+<li>整合权限<ul>
+<li>Shiro</li>
+<li>Spring Security</li>
+</ul>
+</li>
+<li>整合各种中间件：缓存、MQ、RPC框架、NIO框架</li>
+</ul>
+</li>
+</ul>
+<h2 id="服务器软件"><a href="#服务器软件" class="headerlink" title="服务器软件"></a>服务器软件</h2><ul>
+<li>Web服务器<ul>
+<li>Nginx</li>
+</ul>
+</li>
+<li>应用服务器<ul>
+<li>Tomcat👌</li>
+<li>Jetty</li>
+<li>Undertow</li>
+</ul>
+</li>
+</ul>
+<h2 id="中间件"><a href="#中间件" class="headerlink" title="中间件"></a>中间件</h2><ul>
+<li><h3 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h3><ul>
+<li><h4 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h4><ul>
+<li>五大数据类型👌</li>
+<li>事务</li>
+<li>消息通知</li>
+<li>管道</li>
+<li>持久化</li>
+<li>集群</li>
+</ul>
+</li>
+<li><p>Memcachae</p>
+</li>
+</ul>
+</li>
+<li><h3 id="消息队列"><a href="#消息队列" class="headerlink" title="消息队列"></a>消息队列</h3><ul>
+<li>RocketMQ</li>
+<li>RabbitMQ</li>
+<li>Kafka</li>
+</ul>
+</li>
+<li><h3 id="RPC框架"><a href="#RPC框架" class="headerlink" title="RPC框架"></a>RPC框架</h3><ul>
+<li>Dubbo</li>
+<li>gRPC</li>
+<li>Thrift</li>
+<li>Spring Cloud</li>
+<li>Netty</li>
+</ul>
+</li>
+</ul>
+<h2 id="数据库-1"><a href="#数据库-1" class="headerlink" title="数据库"></a>数据库</h2><ul>
+<li><h3 id="ORM层框架"><a href="#ORM层框架" class="headerlink" title="ORM层框架"></a>ORM层框架</h3><ul>
+<li>MyBatis👌</li>
+<li><del>Hibemate</del></li>
+<li>JPA</li>
+</ul>
+</li>
+<li><h3 id="连接池"><a href="#连接池" class="headerlink" title="连接池"></a>连接池</h3><ul>
+<li>Druid</li>
+<li>HikariCP</li>
+<li>C3p0</li>
+</ul>
+</li>
+<li><h3 id="分库分表"><a href="#分库分表" class="headerlink" title="分库分表"></a>分库分表</h3><ul>
+<li>MyCat</li>
+<li>Sharding-JDBC</li>
+<li>Sharding-Sphere</li>
+</ul>
+</li>
+</ul>
+<h2 id="搜索引擎"><a href="#搜索引擎" class="headerlink" title="搜索引擎"></a>搜索引擎</h2><ul>
+<li>ElasticSearch</li>
+<li>Solr</li>
+</ul>
+<h2 id="分布式-微服务"><a href="#分布式-微服务" class="headerlink" title="分布式&#x2F;微服务"></a>分布式&#x2F;微服务</h2><ul>
+<li><h3 id="服务发现-注册"><a href="#服务发现-注册" class="headerlink" title="服务发现&#x2F;注册"></a>服务发现&#x2F;注册</h3><ul>
+<li>Eureka</li>
+<li>Consul</li>
+<li>Zookeeper</li>
+<li>Nacos</li>
+</ul>
+</li>
+<li><h3 id="网关"><a href="#网关" class="headerlink" title="网关"></a>网关</h3><ul>
+<li>Zuul</li>
+<li>Gateway</li>
+</ul>
+</li>
+<li><h3 id="服务调用（负载均衡）"><a href="#服务调用（负载均衡）" class="headerlink" title="服务调用（负载均衡）"></a>服务调用（负载均衡）</h3><ul>
+<li>Ribbon</li>
+<li>Feign</li>
+</ul>
+</li>
+<li><h3 id="熔断-降级"><a href="#熔断-降级" class="headerlink" title="熔断&#x2F;降级"></a>熔断&#x2F;降级</h3><ul>
+<li>Hystrix</li>
+</ul>
+</li>
+<li><h3 id="配置中心"><a href="#配置中心" class="headerlink" title="配置中心"></a>配置中心</h3><ul>
+<li>Config</li>
+<li>Apollo</li>
+<li>Nacos</li>
+</ul>
+</li>
+<li><h3 id="认证和鉴权"><a href="#认证和鉴权" class="headerlink" title="认证和鉴权"></a>认证和鉴权</h3><ul>
+<li>Shiro</li>
+<li>Spring Security</li>
+<li>OAurth2</li>
+<li>SSO</li>
+</ul>
+</li>
+<li><h3 id="分布式事务"><a href="#分布式事务" class="headerlink" title="分布式事务"></a>分布式事务</h3><ul>
+<li>JTA接口——Atomikos组件</li>
+<li>2PC、3PC</li>
+<li>XA模式</li>
+<li>TCC模式<ul>
+<li>tcc——transaction</li>
+<li>ByteTCC</li>
+<li>EasyTransaction</li>
+<li>Seata</li>
+</ul>
+</li>
+<li>SAGA模式<ul>
+<li>ServiceComb</li>
+<li>Seata</li>
+</ul>
+</li>
+<li>LCN模式<ul>
+<li>tx——lcn</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h3 id="任务调度"><a href="#任务调度" class="headerlink" title="任务调度"></a>任务调度</h3><ul>
+<li>Quartz</li>
+<li>Elastic-Job</li>
+</ul>
+</li>
+<li><h3 id="链路追踪与监控"><a href="#链路追踪与监控" class="headerlink" title="链路追踪与监控"></a>链路追踪与监控</h3><ul>
+<li>Zipkin</li>
+<li>Sleuth</li>
+<li>Skywalking</li>
+</ul>
+</li>
+<li><h3 id="日志分析与监控"><a href="#日志分析与监控" class="headerlink" title="日志分析与监控"></a>日志分析与监控</h3><ul>
+<li>ELK<ul>
+<li>ElasticSearch</li>
+<li>Logstash</li>
+<li>Kibana</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="虚拟化容器"><a href="#虚拟化容器" class="headerlink" title="虚拟化容器"></a>虚拟化容器</h2><ul>
+<li>容器技术<ul>
+<li>Docker</li>
+</ul>
+</li>
+<li>容器编排技术<ul>
+<li>Kubernetes</li>
+<li>Swarm</li>
+</ul>
+</li>
+</ul>
+<h1 id="前端框架"><a href="#前端框架" class="headerlink" title="前端框架"></a>前端框架</h1><h2 id="基础套餐"><a href="#基础套餐" class="headerlink" title="基础套餐"></a>基础套餐</h2><ul>
+<li><h3 id="三大件"><a href="#三大件" class="headerlink" title="三大件"></a>三大件</h3><ul>
+<li>HTML👌</li>
+<li>JavaScript👌</li>
+<li>CSS👌</li>
+</ul>
+</li>
+<li><h3 id="基础库"><a href="#基础库" class="headerlink" title="基础库"></a>基础库</h3><ul>
+<li>jQuery👌</li>
+<li>Ajax</li>
+</ul>
+</li>
+</ul>
+<h2 id="模板框架"><a href="#模板框架" class="headerlink" title="模板框架"></a>模板框架</h2><ul>
+<li>jsp</li>
+<li>Thymeleaf</li>
+<li>FreeMarker</li>
+</ul>
+<h2 id="组件化框架"><a href="#组件化框架" class="headerlink" title="组件化框架"></a>组件化框架</h2><ul>
+<li>Node</li>
+<li>Vue👌</li>
+<li>React</li>
+<li>Angular</li>
+</ul>
+<h1 id="运维知识"><a href="#运维知识" class="headerlink" title="运维知识"></a>运维知识</h1><ul>
+<li>web服务——Nginx</li>
+<li>应用服务——tomcat&#x2F;jetty&#x2F;undertow</li>
+<li>CDN加速</li>
+<li>持续集成&#x2F;持续发布——Jenkins</li>
+<li>代码质量检查——sonar</li>
+<li>日志收集&#x2F;分析——ELK</li>
+</ul>
+<h1 id="成神之路"><a href="#成神之路" class="headerlink" title="成神之路"></a>成神之路</h1><ul>
+<li>徒手撕代码</li>
+<li>光脚造轮子</li>
+<li>闭眼深度调优</li>
+<li>吊打面试官</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://znxs.vip">znxs</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://znxs.vip/2023/06/17/java%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/">http://znxs.vip/2023/06/17/java%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://znxs.vip" target="_blank">znxs</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/java/">java</a><a class="post-meta__tags" href="/tags/%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/">学习路线</a></div><div class="post_share"><div class="social-share" data-image="https://img.znxs.vip/znxs/961638.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/06/28/znxs%E7%9A%84%E6%9A%91%E6%9C%9F%E8%A7%84%E5%88%92/" title="znxs的暑期规划"><img class="cover" src="https://img.znxs.vip/znxs/1059288.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">znxs的暑期规划</div></div></a></div><div class="next-post pull-right"><a href="/2023/06/14/%E6%B5%8B%E8%AF%95%E9%A1%B5%E9%9D%A2/" title="测试页面"><img class="cover" src="https://img.znxs.vip/znxs/824467.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">测试页面</div></div></a></div></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://img.znxs.vip/znxs/avatar_%E7%A5%9E%E9%87%8C.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">znxs</div><div class="author-info__description">落子无悔</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">26</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/znxs"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91"><span class="toc-number">1.</span> <span class="toc-text">java后端开发</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%BC%96%E7%A8%8B"><span class="toc-number">2.</span> <span class="toc-text">基础编程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#java%E8%AF%AD%E8%A8%80%E5%AF%B9"><span class="toc-number">2.1.</span> <span class="toc-text">java语言对</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80"><span class="toc-number">2.1.1.</span> <span class="toc-text">语言基础</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JVM"><span class="toc-number">2.1.2.</span> <span class="toc-text">JVM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%B6%E5%8F%91-%E5%A4%9A%E7%BA%BF%E7%A8%8B"><span class="toc-number">2.1.3.</span> <span class="toc-text">并发&#x2F;多线程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95"><span class="toc-number">2.2.</span> <span class="toc-text">数据结构和算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-number">2.2.1.</span> <span class="toc-text">数据结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%97%E6%B3%95"><span class="toc-number">2.2.2.</span> <span class="toc-text">算法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C"><span class="toc-number">2.3.</span> <span class="toc-text">计算机网络</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">2.4.</span> <span class="toc-text">数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.5.</span> <span class="toc-text">操作系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="toc-number">2.6.</span> <span class="toc-text">设计模式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%A0%94%E5%8F%91%E5%B7%A5%E5%85%B7"><span class="toc-number">3.</span> <span class="toc-text">研发工具</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9B%86%E6%88%90%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83"><span class="toc-number">3.1.</span> <span class="toc-text">集成开发环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux%E7%B3%BB%E7%BB%9F"><span class="toc-number">3.2.</span> <span class="toc-text">Linux系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7"><span class="toc-number">3.3.</span> <span class="toc-text">代码管理工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86-%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7"><span class="toc-number">3.4.</span> <span class="toc-text">项目管理&#x2F;构建工具</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6"><span class="toc-number">4.</span> <span class="toc-text">后端框架</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring%E5%85%A8%E5%AE%B6%E6%A1%B6"><span class="toc-number">4.1.</span> <span class="toc-text">Spring全家桶</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Spring-Farmwork"><span class="toc-number">4.1.1.</span> <span class="toc-text">Spring Farmwork</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Spring-MVC"><span class="toc-number">4.1.2.</span> <span class="toc-text">Spring MVC</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Spring-Boot"><span class="toc-number">4.1.3.</span> <span class="toc-text">Spring Boot</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BD%AF%E4%BB%B6"><span class="toc-number">4.2.</span> <span class="toc-text">服务器软件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="toc-number">4.3.</span> <span class="toc-text">中间件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%93%E5%AD%98"><span class="toc-number">4.3.1.</span> <span class="toc-text">缓存</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Redis"><span class="toc-number">4.3.1.1.</span> <span class="toc-text">Redis</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97"><span class="toc-number">4.3.2.</span> <span class="toc-text">消息队列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RPC%E6%A1%86%E6%9E%B6"><span class="toc-number">4.3.3.</span> <span class="toc-text">RPC框架</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93-1"><span class="toc-number">4.4.</span> <span class="toc-text">数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ORM%E5%B1%82%E6%A1%86%E6%9E%B6"><span class="toc-number">4.4.1.</span> <span class="toc-text">ORM层框架</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5%E6%B1%A0"><span class="toc-number">4.4.2.</span> <span class="toc-text">连接池</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8"><span class="toc-number">4.4.3.</span> <span class="toc-text">分库分表</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E"><span class="toc-number">4.5.</span> <span class="toc-text">搜索引擎</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F-%E5%BE%AE%E6%9C%8D%E5%8A%A1"><span class="toc-number">4.6.</span> <span class="toc-text">分布式&#x2F;微服务</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0-%E6%B3%A8%E5%86%8C"><span class="toc-number">4.6.1.</span> <span class="toc-text">服务发现&#x2F;注册</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E5%85%B3"><span class="toc-number">4.6.2.</span> <span class="toc-text">网关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E8%B0%83%E7%94%A8%EF%BC%88%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%EF%BC%89"><span class="toc-number">4.6.3.</span> <span class="toc-text">服务调用（负载均衡）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%86%94%E6%96%AD-%E9%99%8D%E7%BA%A7"><span class="toc-number">4.6.4.</span> <span class="toc-text">熔断&#x2F;降级</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83"><span class="toc-number">4.6.5.</span> <span class="toc-text">配置中心</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A4%E8%AF%81%E5%92%8C%E9%89%B4%E6%9D%83"><span class="toc-number">4.6.6.</span> <span class="toc-text">认证和鉴权</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1"><span class="toc-number">4.6.7.</span> <span class="toc-text">分布式事务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6"><span class="toc-number">4.6.8.</span> <span class="toc-text">任务调度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%93%BE%E8%B7%AF%E8%BF%BD%E8%B8%AA%E4%B8%8E%E7%9B%91%E6%8E%A7"><span class="toc-number">4.6.9.</span> <span class="toc-text">链路追踪与监控</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90%E4%B8%8E%E7%9B%91%E6%8E%A7"><span class="toc-number">4.6.10.</span> <span class="toc-text">日志分析与监控</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E5%8C%96%E5%AE%B9%E5%99%A8"><span class="toc-number">4.7.</span> <span class="toc-text">虚拟化容器</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6"><span class="toc-number">5.</span> <span class="toc-text">前端框架</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E5%A5%97%E9%A4%90"><span class="toc-number">5.1.</span> <span class="toc-text">基础套餐</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E5%A4%A7%E4%BB%B6"><span class="toc-number">5.1.1.</span> <span class="toc-text">三大件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E5%BA%93"><span class="toc-number">5.1.2.</span> <span class="toc-text">基础库</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E6%9D%BF%E6%A1%86%E6%9E%B6"><span class="toc-number">5.2.</span> <span class="toc-text">模板框架</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6%E5%8C%96%E6%A1%86%E6%9E%B6"><span class="toc-number">5.3.</span> <span class="toc-text">组件化框架</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%90%E7%BB%B4%E7%9F%A5%E8%AF%86"><span class="toc-number">6.</span> <span class="toc-text">运维知识</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%88%90%E7%A5%9E%E4%B9%8B%E8%B7%AF"><span class="toc-number">7.</span> <span class="toc-text">成神之路</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/05/29/%E5%8D%9A%E5%AE%A2%E4%BF%AE%E6%94%B9%E6%B5%8B%E8%AF%95/" title="博客修改测试"><img src="https://img.znxs.vip/znxs/824467.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="博客修改测试"/></a><div class="content"><a class="title" href="/2024/05/29/%E5%8D%9A%E5%AE%A2%E4%BF%AE%E6%94%B9%E6%B5%8B%E8%AF%95/" title="博客修改测试">博客修改测试</a><time datetime="2024-05-29T08:40:04.000Z" title="发表于 2024-05-29 16:40:04">2024-05-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/05/19/NewIdea/" title="NewIdeas"><img src="https://img.znxs.vip/study/OIP-C.vp1nWfJWeKbpoXFuKXnEcgHaEK" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="NewIdeas"/></a><div class="content"><a class="title" href="/2024/05/19/NewIdea/" title="NewIdeas">NewIdeas</a><time datetime="2024-05-19T14:42:11.000Z" title="发表于 2024-05-19 22:42:11">2024-05-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/05/06/%E5%8D%9A%E5%AE%A2%E5%A4%B4%E6%A0%87%E7%AD%BE%E6%B5%8B%E8%AF%95/" title="博客头标签测试"><img src="https://img.znxs.vip/znxs/bilibiliBGI_%E5%B1%85%E5%AE%B6%E6%89%93%E6%B8%B8%E6%88%8F-Bison%E4%BB%93%E9%BC%A0.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="博客头标签测试"/></a><div class="content"><a class="title" href="/2024/05/06/%E5%8D%9A%E5%AE%A2%E5%A4%B4%E6%A0%87%E7%AD%BE%E6%B5%8B%E8%AF%95/" title="博客头标签测试">博客头标签测试</a><time datetime="2024-05-06T14:40:30.000Z" title="发表于 2024-05-06 22:40:30">2024-05-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/04/15/%E8%8B%B1%E8%AF%AD%E5%A4%8D%E4%B9%A0-%E5%85%B6%E4%B8%80/" title="英语复习-其一"><img src="https://img.znxs.vip/study/next_station_success.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="英语复习-其一"/></a><div class="content"><a class="title" href="/2024/04/15/%E8%8B%B1%E8%AF%AD%E5%A4%8D%E4%B9%A0-%E5%85%B6%E4%B8%80/" title="英语复习-其一">英语复习-其一</a><time datetime="2024-04-15T14:33:28.000Z" title="发表于 2024-04-15 22:33:28">2024-04-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/01/30/%E8%AE%A1%E5%88%92%E9%A1%B9%E7%9B%AE%E5%B8%B8%E7%94%A8%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/" title="计划项目常用技术笔记"><img src="https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4wwtz?ver=e92c" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计划项目常用技术笔记"/></a><div class="content"><a class="title" href="/2024/01/30/%E8%AE%A1%E5%88%92%E9%A1%B9%E7%9B%AE%E5%B8%B8%E7%94%A8%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/" title="计划项目常用技术笔记">计划项目常用技术笔记</a><time datetime="2024-01-30T14:31:42.000Z" title="发表于 2024-01-30 22:31:42">2024-01-30</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2023 - 2024 By znxs</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.14.0-b3"></script><script src="/js/main.js?v=4.14.0-b3"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.35/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const runMermaid = (ele) => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    Array.from(ele).forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+      const mermaidID = 'mermaid-' + index
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+
+      const renderV10 = () => {
+        renderFn.then(({svg}) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svg)
+        })
+      }
+
+      const renderV9 = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
+    })
+  }
+
+  const codeToMermaid = () => {
+    const codeMermaidEle = document.querySelectorAll('pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+    
+    codeMermaidEle.forEach(ele => {
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.innerHTML = `<pre class="mermaid-src" hidden>${ele.textContent}</pre>`
+      ele.parentNode.replaceWith(newEle)
+    })
+  }
+
+  const loadMermaid = () => {
+    if (false) codeToMermaid()
+    const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid@10.9.0/dist/mermaid.min.js').then(runMermaidFn)
+  }
+  
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script><script>(() => {
+  let initFn = window.walineFn || null
+
+  const initWaline = (Fn) => {
+    const waline = Fn(Object.assign({
+      el: '#waline-wrap',
+      serverURL: 'https://commons.znxs.vip',
+      pageview: false,
+      dark: 'html[data-theme="dark"]',
+      path: window.location.pathname,
+      comment: false,
+    }, null))
+
+    const destroyWaline = () => {
+      waline.destroy()
+    }
+
+    btf.addGlobalFn('pjax', destroyWaline, 'destroyWaline')
+  }
+
+  const loadWaline = () => {
+    if (initFn) initWaline(initFn)
+    else {
+      btf.getCSS('https://cdn.jsdelivr.net/npm/@waline/client@3.1.3/dist/waline.min.css')
+        .then(() => import('https://cdn.jsdelivr.net/npm/@waline/client@3.1.3/dist/waline.min.js'))
+        .then(({ init }) => {
+          initFn = init || Waline.init
+          initWaline(initFn)
+          window.walineFn = initFn
+        })
+    }
+  }
+
+  if ('Waline' === 'Waline' || !false) {
+    if (false) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+    else setTimeout(loadWaline, 0)
+  } else {
+    window.loadOtherComment = loadWaline
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --> <script data-pjax>if(document.getElementById('recent-posts') && location.pathname =='/'){
+    
+    var parent = document.getElementById('recent-posts');
+    var child = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img src="https://img.znxs.vip/znxs/znxsu=953173503,2500713766&fm=253&fmt=auto&app=138&f=JPEG" alt="https://img.znxs.vip/znxs/znxsu=953173503,2500713766&fm=253&fmt=auto&app=138&f=JPEG"/></div><div class="blog-slider__content"><span class="blog-slider__code">2023-09-05</span><a class="blog-slider__title" href="2023/09/05/项目部署实践/">项目部署实践</a><div class="blog-slider__text">项目部署实践</div><a class="blog-slider__button" href="2023/09/05/项目部署实践/">详情</a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img src="https://img.znxs.vip/study/OIP-C.vp1nWfJWeKbpoXFuKXnEcgHaEK" alt="https://img.znxs.vip/study/OIP-C.vp1nWfJWeKbpoXFuKXnEcgHaEK"/></div><div class="blog-slider__content"><span class="blog-slider__code">2024-05-19</span><a class="blog-slider__title" href="2024/05/19/NewIdea/">NewIdeas</a><div class="blog-slider__text">NewIdeas</div><a class="blog-slider__button" href="2024/05/19/NewIdea/">详情</a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img src="https://tse1-mm.cn.bing.net/th/id/OIP-C.R1Bi3fNDyYjLsXdg9OqoIAHaEo?w=315&h=196&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="https://tse1-mm.cn.bing.net/th/id/OIP-C.R1Bi3fNDyYjLsXdg9OqoIAHaEo?w=315&h=196&c=7&r=0&o=5&dpr=1.3&pid=1.7"/></div><div class="blog-slider__content"><span class="blog-slider__code">2023-09-03</span><a class="blog-slider__title" href="2023/09/03/两个设备同步一个git项目/">两个设备同步一个git项目</a><div class="blog-slider__text">两个设备同步一个git项目</div><a class="blog-slider__button" href="2023/09/03/两个设备同步一个git项目/">详情</a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载swiper')
+    parent.insertAdjacentHTML("afterbegin",child)}
+     </script>
+<script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiper.min.js"></script>
+<script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper@0.18/swiper/swiperindex.js"></script>
+<style></style><!-- hexo injector body_end end --></body></html>
