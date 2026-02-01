@@ -1,0 +1,348 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>技术学习资源 | znxs</title><meta name="author" content="znxs"><meta name="copyright" content="znxs"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="一些技术资源网盘链接">
+<meta property="og:type" content="article">
+<meta property="og:title" content="技术学习资源">
+<meta property="og:url" content="http://znxs.vip/2025/04/24/it%E8%B5%84%E6%BA%90/index.html">
+<meta property="og:site_name" content="znxs">
+<meta property="og:description" content="一些技术资源网盘链接">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.znxs.vip/study/202504241757453.jpg">
+<meta property="article:published_time" content="2025-04-24T09:54:00.000Z">
+<meta property="article:modified_time" content="2025-12-25T01:58:48.859Z">
+<meta property="article:author" content="znxs">
+<meta property="article:tag" content="资源">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img.znxs.vip/study/202504241757453.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "技术学习资源",
+  "url": "http://znxs.vip/2025/04/24/it%E8%B5%84%E6%BA%90/",
+  "image": "https://img.znxs.vip/study/202504241757453.jpg",
+  "datePublished": "2025-04-24T09:54:00.000Z",
+  "dateModified": "2025-12-25T01:58:48.859Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "znxs",
+      "url": "http://znxs.vip/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="http://znxs.vip/2025/04/24/it%E8%B5%84%E6%BA%90/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.4.0-b1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":500,"languages":{"author":"作者: znxs","link":"链接: ","source":"来源: znxs","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '技术学习资源',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiper.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiperstyle.css"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg" style="background-image: url(/url(https:/img.znxs.vip/study/202408241129726_Stepsister.jpg));"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://img.znxs.vip/znxs/avatar_%E7%A5%9E%E9%87%8C.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">47</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">61</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://img.znxs.vip/study/202504241757453.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/favicon.ico" alt="Logo"><span class="site-name">znxs</span></a><a class="nav-page-title" href="/"><span class="site-name">技术学习资源</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">技术学习资源</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-04-24T09:54:00.000Z" title="发表于 2025-04-24 17:54:00">2025-04-24</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-12-25T01:58:48.859Z" title="更新于 2025-12-25 09:58:48">2025-12-25</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">2.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>10分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h3 id="python"><a href="#python" class="headerlink" title="python"></a>python</h3><p> Python 数据可视化：从基础入门到实战指南  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/57c22f2dc602">https://pan.quark.cn/s/57c22f2dc602</a>  </p>
+<p>彭涛-Python 爬虫训练营  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/12043c7f23d2">https://pan.quark.cn/s/12043c7f23d2</a>  </p>
+<p>【51CTO】-深度学习-Django 搭建 CNN 网络实现图像识别-【附带源码课件】 <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/228d8d636d41">https://pan.quark.cn/s/228d8d636d41</a>  </p>
+<p>网易云课堂-杨洋-全民一起玩 Python（基础+提高+实战）  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/e8e7a39d766d">https://pan.quark.cn/s/e8e7a39d766d</a>  </p>
+<p>韩顺平-零基础 快速学 Python(适合 Python 零基础 Python 初学入门)  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/7387b4abbae3">https://pan.quark.cn/s/7387b4abbae3</a>  </p>
+<p>蜗牛学苑-《轻松入门 Python 数据分析》  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/061cce7c04a1">https://pan.quark.cn/s/061cce7c04a1</a>  </p>
+<p>Python 深度学习验证码识别全集视频课  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/53da13cd671e">https://pan.quark.cn/s/53da13cd671e</a>  </p>
+<p>Python 运维自动化课程  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/a7e65f0209d0">https://pan.quark.cn/s/a7e65f0209d0</a>  </p>
+<p>移动端 Python 爬虫进阶实战  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/9ba7753ac042">https://pan.quark.cn/s/9ba7753ac042</a>  </p>
+<p>【深度之眼】深度学习 PyTorch 框架  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/2d50746aa770">https://pan.quark.cn/s/2d50746aa770</a>  </p>
+<p>马哥教育《Python 全栈+爬虫+数据+AI 课程》  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/815b56b2ab69">https://pan.quark.cn/s/815b56b2ab69</a>  </p>
+<p>Python 分布式爬虫与 JS 逆向进阶实战（前 12 章）  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/05ebd3a228b0">https://pan.quark.cn/s/05ebd3a228b0</a>  </p>
+<p>Python 量化交易工程师养成实战-金融高薪领域（13 章） <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/aef486731fdd">https://pan.quark.cn/s/aef486731fdd</a>  </p>
+<p>网易云课堂-知识图谱实战系列（Python 版）  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/29a77870936e">https://pan.quark.cn/s/29a77870936e</a>  </p>
+<p>慕课网-Python Flask 全流程全栈项目实战【完结】  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/924c02806e72">https://pan.quark.cn/s/924c02806e72</a>  </p>
+<p>Python 零基础数据库可视化教程  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/83c7e9264b89">https://pan.quark.cn/s/83c7e9264b89</a>  </p>
+<p>Python Flask 快速入门与进阶  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/a0f388a03313">https://pan.quark.cn/s/a0f388a03313</a>  </p>
+<p>Python 企业级全技术栈开发  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/e1d0335701f8">https://pan.quark.cn/s/e1d0335701f8</a>  </p>
+<p>《2024 最新版 Python 视频教程》 从零基础到精通，超高清全套139 节课内附软件+课件+随堂代码  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/0fd2236e9393">https://pan.quark.cn/s/0fd2236e9393</a>  </p>
+<p>有霸夫-Python 自动化办公和游戏  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/cbc04865c4e5">https://pan.quark.cn/s/cbc04865c4e5</a>  </p>
+<p>零基础 Python 趣味 AI 项目，紧跟趋势、趣味 Al、强化编程能力 <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/f9145fa90cae">https://pan.quark.cn/s/f9145fa90cae</a>  </p>
+<p>尚硅谷 2024 最新版 Python 视频教程 视频+软件+课件  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/a58b63fddeb6">https://pan.quark.cn/s/a58b63fddeb6</a>  </p>
+<p>《畅销 3 年的 Python 分布式爬虫课程》慕课网实战课 提升你的编程能力[mp4] <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/e23274c4096c">https://pan.quark.cn/s/e23274c4096c</a>  </p>
+<p>夜猫编程 Python 爬虫 JS 逆向进阶课(录播课＋答疑)从零基础到高薪就业编程课 <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/7cf787cb7d3b">https://pan.quark.cn/s/7cf787cb7d3b</a> </p>
+<p>Python 零基础 30 天速通（小白定制版）（完结）  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/94a6ff5d1a35">https://pan.quark.cn/s/94a6ff5d1a35</a>  </p>
+<p>图灵 Python 软件安装合集  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/ddf90c7d95fa">https://pan.quark.cn/s/ddf90c7d95fa</a>  </p>
+<p>黑马-Python+大数据年度钻石会员-价值 24980-14 阶段完结无密 <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/be4155e00801">https://pan.quark.cn/s/be4155e00801</a>  </p>
+<p>黑马-Python+大数据年度钻石会员  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/4e7a6bb6b795">https://pan.quark.cn/s/4e7a6bb6b795</a>  </p>
+<p>梗直哥瞿炜-机器学习必修课：经典算法与 Python 实战 <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/365caddf96b8">https://pan.quark.cn/s/365caddf96b8</a>  </p>
+<p>Python 灰帽子网络安全实践  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/aa6c1f885691">https://pan.quark.cn/s/aa6c1f885691</a>  </p>
+<p>#C 语言&amp;C++  尚硅谷宋红康 C 语言精讲  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/5bec201b6a4d">https://pan.quark.cn/s/5bec201b6a4d</a>  </p>
+<p>【夏曹俊】C++设计模式理论与实战大全-架构师必学视频课程 <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/c8a739797a4b">https://pan.quark.cn/s/c8a739797a4b</a>  </p>
+<p>贺老师聊编程竞赛六合一 - C++普及组全套，语法+数据结构+算法+初赛+复赛+真题精讲 <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/575de5b0ddb1">https://pan.quark.cn/s/575de5b0ddb1</a>  </p>
+<p>奇牛学院-C&#x2F;C++从入门到精通-高级程序员之路第 2 期  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/b0a822ebeb20">https://pan.quark.cn/s/b0a822ebeb20</a>  </p>
+<p>黑马-2024 新版 C++8 天零基础入门到精通  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/bc89d6b24d38">https://pan.quark.cn/s/bc89d6b24d38</a>  </p>
+<p>51CTO-现代 C++(C++ 11 核心特性详解)  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/6e8334ef1216">https://pan.quark.cn/s/6e8334ef1216</a>  </p>
+<p>小甲鱼 C C++ 数据结构和算法视频教程合集  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/96f37ea7e0ff">https://pan.quark.cn/s/96f37ea7e0ff</a>  </p>
+<p>零声-C++游戏后端开发（魔兽世界 MMOTrinityCore 源码拆解)  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/fbc629c4bfb5">https://pan.quark.cn/s/fbc629c4bfb5</a>  </p>
+<p>C++百万并发网络通信引擎架构与实现(服务端+客户端+跨平台)第2 季 <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/8cb5fb76af10">https://pan.quark.cn/s/8cb5fb76af10</a>  </p>
+<p>C／C++全栈 内核 调试(51hook 软件安全课程)  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/60d8c4433109">https://pan.quark.cn/s/60d8c4433109</a>  </p>
+<p>C++设计模式原理与实战视频课  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/0edf07193982">https://pan.quark.cn/s/0edf07193982</a>  </p>
+<p>侯捷老师 C++ 全系列八部曲 - 手把手教你进阶系列  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/1b73f83addce">https://pan.quark.cn/s/1b73f83addce</a>  </p>
+<p>唐三藏 C++64 位游戏软件安全汇编与反汇编反调试 2021 年 <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/acedc9142ee0">https://pan.quark.cn/s/acedc9142ee0</a>  </p>
+<h3 id="Linux-操作系统"><a href="#Linux-操作系统" class="headerlink" title="Linux&amp;操作系统"></a>Linux&amp;操作系统</h3><p>韩顺平《小白一周学会 Linux》  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/305798907253">https://pan.quark.cn/s/305798907253</a>  </p>
+<p>2024 全新版 操作系统入门与实践-参透技术本质  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/93b062241724">https://pan.quark.cn/s/93b062241724</a>  </p>
+<p>慕课网-2024 全新版 操作系统入门与实践-参透技术本质【完结】 <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/c26a698e40be">https://pan.quark.cn/s/c26a698e40be</a>  </p>
+<p>猿来教育-Linux 云计算 SRE 工程师  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/679074d37ff7">https://pan.quark.cn/s/679074d37ff7</a>  </p>
+<p>Linux 性能分析之 CPU 实战  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/d8fec0ae146c">https://pan.quark.cn/s/d8fec0ae146c</a>  </p>
+<p>麦洛克菲-内核开发课程  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/367cad96dc8d">https://pan.quark.cn/s/367cad96dc8d</a>  </p>
+<p>王利涛-linux 高级编程  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/f93788283e7e">https://pan.quark.cn/s/f93788283e7e</a>  </p>
+<p>王利涛-linux 系统编程  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/7320b8eab729">https://pan.quark.cn/s/7320b8eab729</a>  </p>
+<p>网易云课堂-李述铜 从 0 手写自己的 Linux x86 操作系统 <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/fd2d8b4da0be">https://pan.quark.cn/s/fd2d8b4da0be</a>  </p>
+<p>极客时间-专栏课-李世明-跟阿铭学 Linux（完结）  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/e43288ac5dd2">https://pan.quark.cn/s/e43288ac5dd2</a>  </p>
+<p>马哥-Linux 高端运维云计算就业班  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/e5bb55e82cd4">https://pan.quark.cn/s/e5bb55e82cd4</a>  </p>
+<p>零声教育-2023 新版 Linux 内核源码分析  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/450535fe5c81">https://pan.quark.cn/s/450535fe5c81</a>  </p>
+<p>火哥 windows 内核六期  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/2f0209cf6c93">https://pan.quark.cn/s/2f0209cf6c93</a>  </p>
+<p>韦东山-嵌入式 Linux 全新系列教程之驱动大全(基于 IMX6ULL 开发板)  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/301487166508">https://pan.quark.cn/s/301487166508</a>  </p>
+<p>京峰教育-Linux 云计算构架师+DevOps 虚拟化班  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/780731861bda">https://pan.quark.cn/s/780731861bda</a>  </p>
+<p>慕课网实战课-Shell 高阶开发实战-完结  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/5663f624f838">https://pan.quark.cn/s/5663f624f838</a>  </p>
+<p>网易云课堂-Linux 内核分析  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/093b2cafa393">https://pan.quark.cn/s/093b2cafa393</a>  </p>
+<p>51CTO-Windows 内核安全(第一部)  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/89d8401adcab">https://pan.quark.cn/s/89d8401adcab</a>  </p>
+<p>【马哥教育】Linux 运维就业班_Linux 架构班_Linux 零基础到运维架构大神-带源码课件  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/c55d30f6b1c3">https://pan.quark.cn/s/c55d30f6b1c3</a>  </p>
+<h3 id="面试资料"><a href="#面试资料" class="headerlink" title="面试资料"></a>面试资料</h3><p>印客学院-程序员全套面试资料 PDF  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/f3989dc0f45b">https://pan.quark.cn/s/f3989dc0f45b</a>  </p>
+<p>大模型面试资料 掌握面试制胜之道  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/9b69285781f8">https://pan.quark.cn/s/9b69285781f8</a>  </p>
+<p>金三银四 面试突击班（完整）  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/cb93db4ec4ce">https://pan.quark.cn/s/cb93db4ec4ce</a>  </p>
+<p>51CTO-网络工程师面试视频课程【经典十问】（面试技巧+技术问题）  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/c090696ae40b">https://pan.quark.cn/s/c090696ae40b</a>  </p>
+<p>中小厂程序员学习资料合集  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/7e67f1264d32">https://pan.quark.cn/s/7e67f1264d32</a>  </p>
+<p>顶级互联网工程师的计算机思维课(完结)  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/eb61f98f986e">https://pan.quark.cn/s/eb61f98f986e</a>  </p>
+<p>【慕课网】-大话 HTTP 协议 漫画+图解打造的编程基础课程 <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/51561a97b5a8">https://pan.quark.cn/s/51561a97b5a8</a>  </p>
+<p>【Java】图灵-从 0 开始打造万人直播系统  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/4c93cdc52fa7">https://pan.quark.cn/s/4c93cdc52fa7</a>  </p>
+<p>黑马传智-产品经理课程  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/03759988a77a">https://pan.quark.cn/s/03759988a77a</a>  </p>
+<p>拉钩-22 讲通关 Go 语言-Go 语言布道者的入门笔记  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/ce1979c87f60">https://pan.quark.cn/s/ce1979c87f60</a>  </p>
+<p>码神模块 10gozero 实战-数字货币交易所  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/f449d51e2df7">https://pan.quark.cn/s/f449d51e2df7</a>  </p>
+<p>黑马程序员-软件测试视频课 V5.0 - 附带源码课件  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/2a3e404deb46">https://pan.quark.cn/s/2a3e404deb46</a>  </p>
+<p>2024 最新易语言基础快速入门到精通教程：1 天入门快速开发自己的软件 <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/f4cb02b2a239">https://pan.quark.cn/s/f4cb02b2a239</a> </p>
+<p> Python 开发-基于 Tornado 开发高性能多人在线麻将游戏 <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/82abdd953222">https://pan.quark.cn/s/82abdd953222</a>  </p>
+<p>拉钩-数据分析实战训练营 8 期  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/a103fece4b5f">https://pan.quark.cn/s/a103fece4b5f</a>  </p>
+<p>siki 学院-Steam 模拟经营游戏《冒险村的商人日记》从开发到上架全流程 <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/8635dfd6bb4a">https://pan.quark.cn/s/8635dfd6bb4a</a>  </p>
+<p>网易云课堂-从零撸一个 CLI 命令行脚手架工具  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/f9e060811c53">https://pan.quark.cn/s/f9e060811c53</a>  </p>
+<p>虫师测试开发班（1-3 期）  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/0bf95994963c">https://pan.quark.cn/s/0bf95994963c</a>  </p>
+<p>高并发&amp;高性能 Go 语言开发企业级抽奖项目 - 带源码课件 <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/6938033d01cb">https://pan.quark.cn/s/6938033d01cb</a>  </p>
+<p>Zinx-Golang 轻量级 TCP 服务器框架 - 带源码课件  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/f8ca9c712693">https://pan.quark.cn/s/f8ca9c712693</a>  </p>
+<p>汽车学堂-新能源汽车 BMS 开发工程师，4 个月挑战行业高薪 <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/419c7d62bbc7">https://pan.quark.cn/s/419c7d62bbc7</a>  </p>
+<p>Coze 零基础开发 Agent 智能体，无代码开发对话机器人 <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/10067ccd67e6">https://pan.quark.cn/s/10067ccd67e6</a>  </p>
+<p>【51CTO】韩立刚计算机网络原理  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/8ab9e7ab1af4">https://pan.quark.cn/s/8ab9e7ab1af4</a>  </p>
+<p>码神之路-Golang 棋牌游戏开发后端实战  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/68da14b31a0e">https://pan.quark.cn/s/68da14b31a0e</a>  </p>
+<p>极客大学-云原生训练营 | 价值 8999 元 | 模块十五 | 【完结无秘】 <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/652b71c01151">https://pan.quark.cn/s/652b71c01151</a>  </p>
+<p>深度之眼-《深度学习》 花书训练营 第二期  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/bb0a3cb24aa5">https://pan.quark.cn/s/bb0a3cb24aa5</a>  </p>
+<p>华为 HCIP 网络工程师开班视频课程  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/2cbee18b0e9d">https://pan.quark.cn/s/2cbee18b0e9d</a>  </p>
+<p>腾讯课堂-Kubernetes K8s 架构师实战集训营【高级班】 <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/9bb5b1bb8622">https://pan.quark.cn/s/9bb5b1bb8622</a>  </p>
+<p>次世代必备黑科技：创意编程指南（完结）  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/7fc6f1c61494">https://pan.quark.cn/s/7fc6f1c61494</a>  </p>
+<p>华清远见 2024 嵌入式物联网工程师  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/99e2e0173f19">https://pan.quark.cn/s/99e2e0173f19</a>  </p>
+<p>【极客时间】全链路压测实战 30 讲（完结）  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/c1e3c3c3a303">https://pan.quark.cn/s/c1e3c3c3a303</a> </p>
+<p>安全软件生命周期 SDLC 课程  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/aa064914180f">https://pan.quark.cn/s/aa064914180f</a>  </p>
+<p>阿良-KubernetesK8s CKS 认证实战班（安全专家）2021 第1 期 <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/e122c6b89b6b">https://pan.quark.cn/s/e122c6b89b6b</a>  </p>
+<p>朝夕-C#+winform+上位机+WPF 零基础教程  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/b6b29f8a97d4">https://pan.quark.cn/s/b6b29f8a97d4</a>  </p>
+<p>Udemy 优达 Unity 游戏开发大师课  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/8b9517976d17">https://pan.quark.cn/s/8b9517976d17</a>  </p>
+<p>老鑫免杀第二期  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/ae3b96645d42">https://pan.quark.cn/s/ae3b96645d42</a>  </p>
+<p>极客时间-Go 实战训练营 1 期|价值 5999|2023 年|完结无秘16 周 <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/844cee3c152b">https://pan.quark.cn/s/844cee3c152b</a>  </p>
+<p>撒拉西柚透视自瞄课程全套  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/585a18459363">https://pan.quark.cn/s/585a18459363</a>  </p>
+<p>【开课吧】高并发服务器开发  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/0ac67f22d972">https://pan.quark.cn/s/0ac67f22d972</a>  </p>
+<p>【创客学院】物联网开发+嵌入式开发 - 带源码课件  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/90b466b81bdb">https://pan.quark.cn/s/90b466b81bdb</a>  </p>
+<p>黑马云岚到家 v1.0  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/952b6eb6c485">https://pan.quark.cn/s/952b6eb6c485</a>  </p>
+<p>【奈学科技】P7 数据分析架构师 1 期  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/2dbd764ff5dc">https://pan.quark.cn/s/2dbd764ff5dc</a>  </p>
+<p>2021 火星虚幻引擎交互开发工程师  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/c79607cfd6b9">https://pan.quark.cn/s/c79607cfd6b9</a>  </p>
+<p>程序员的 AI 必修课，AIGC 全栈项目实战（AI 前端后端测试运维)  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/a8bfc95a3714">https://pan.quark.cn/s/a8bfc95a3714</a>  </p>
+<p>51CTO 奇境-OpenGL 原理与实践  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/b4b40c578436">https://pan.quark.cn/s/b4b40c578436</a>  </p>
+<p>51CTO-数据分析与机器学习实战人脸检测  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/c4105fc3eddb">https://pan.quark.cn/s/c4105fc3eddb</a>  </p>
+<p>云之巅峰 CTO 级别课程 Kubeadm 源码深度开发  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/26472962ba6b">https://pan.quark.cn/s/26472962ba6b</a>  </p>
+<p>Wireshark+Sniffer 视频课程  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/dae269b9a268">https://pan.quark.cn/s/dae269b9a268</a>  </p>
+<p>老陈上官-嵌入式零基础到就业年班  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/2c829afe09cc">https://pan.quark.cn/s/2c829afe09cc</a>  </p>
+<p>siki 学院-Unity2.5D RTS 案例-云端战纪  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/2dbdd03402eb">https://pan.quark.cn/s/2dbdd03402eb</a>  </p>
+<p>千峰教育-4 天搞定 Git+Jenkins+Harbor+Docker 实现 CICD  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/62f902e2c9c0">https://pan.quark.cn/s/62f902e2c9c0</a>  </p>
+<p>慕课网-基于 Golang 协程实现流量统计系统  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/09c73a246452">https://pan.quark.cn/s/09c73a246452</a>  </p>
+<p>陈鑫杰-Wireshark 协议分析基础与提升  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/c9ae776c058a">https://pan.quark.cn/s/c9ae776c058a</a>  </p>
+<p>图灵爬虫第 13 期+核心 16 期 学习笔记  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/8bf2004487af">https://pan.quark.cn/s/8bf2004487af</a>  </p>
+<p>深度之眼-多模态项目实战班  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/8d284b546712">https://pan.quark.cn/s/8d284b546712</a>  </p>
+<p>Ado.Net 基础到精通教程  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/c456404178c0">https://pan.quark.cn/s/c456404178c0</a>  </p>
+<p>2019 年 Ado.Net 基础到精通教程  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/8551ae1de441">https://pan.quark.cn/s/8551ae1de441</a>  </p>
+<p>李沐-动手学深度学习 V2  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/a50ea31615d2">https://pan.quark.cn/s/a50ea31615d2</a>  </p>
+<p>2023 年物联网嵌入式工程师  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/cf91d775bc04">https://pan.quark.cn/s/cf91d775bc04</a>  </p>
+<p>零基础、零编程，轻松学会微信小游戏制作  <a target="_blank" rel="noopener" href="https://pan.quark.cn/s/fd5447ce9452">https://pan.quark.cn/s/fd5447ce9452</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://znxs.vip">znxs</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://znxs.vip/2025/04/24/it%E8%B5%84%E6%BA%90/">http://znxs.vip/2025/04/24/it%E8%B5%84%E6%BA%90/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://znxs.vip" target="_blank">znxs</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%B5%84%E6%BA%90/">资源</a></div><div class="post-share"><div class="social-share" data-image="https://img.znxs.vip/study/202504241757453.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.4/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.4/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2025/04/15/yupi-project/" title="鱼皮十大小项目"><img class="cover" src="https://img.znxs.vip/study/next_station_success.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">鱼皮十大小项目</div></div><div class="info-2"><div class="info-item-1">鱼皮十大项目</div></div></div></a><a class="pagination-related" href="/2025/04/24/n8n%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8%E6%A1%88%E4%BE%8B/" title="简单使用n8n小案例"><img class="cover" src="https://img.znxs.vip/study/202504301129812.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">简单使用n8n小案例</div></div><div class="info-2"><div class="info-item-1">前几天看到了这个自动化程序项目，感觉很有意思，花了一上午部署学习了一下，于是有了下面这篇部署构建第一个程序的教程</div></div></div></a></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://img.znxs.vip/znxs/avatar_%E7%A5%9E%E9%87%8C.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">znxs</div><div class="author-info-description">落子无悔</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">47</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">61</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/znxs"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#python"><span class="toc-number">1.</span> <span class="toc-text">python</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.</span> <span class="toc-text">Linux&amp;操作系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%A2%E8%AF%95%E8%B5%84%E6%96%99"><span class="toc-number">3.</span> <span class="toc-text">面试资料</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/12/24/%E7%BB%93%E5%B7%B4%E5%81%9C%E8%AF%8D%E5%BA%93/" title="结巴停词库">结巴停词库</a><time datetime="2025-12-24T06:20:07.000Z" title="发表于 2025-12-24 14:20:07">2025-12-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/05/07/RAG-%E7%9F%A5%E8%AF%86%E5%BA%93%E6%97%A0%E6%B3%95%E5%91%BD%E4%B8%AD/" title="RAG 知识库无法命中"><img src="https://img-blog.csdnimg.cn/img_convert/ea3f6f8399f3fdd12e3321434e792b66.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="RAG 知识库无法命中"/></a><div class="content"><a class="title" href="/2025/05/07/RAG-%E7%9F%A5%E8%AF%86%E5%BA%93%E6%97%A0%E6%B3%95%E5%91%BD%E4%B8%AD/" title="RAG 知识库无法命中">RAG 知识库无法命中</a><time datetime="2025-05-07T11:17:32.000Z" title="发表于 2025-05-07 19:17:32">2025-05-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/04/30/SpringBoot%20%E6%95%B4%E5%90%88AI/" title="SpringBoot整合AI"><img src="https://img.znxs.vip/study/202504301108692.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SpringBoot整合AI"/></a><div class="content"><a class="title" href="/2025/04/30/SpringBoot%20%E6%95%B4%E5%90%88AI/" title="SpringBoot整合AI">SpringBoot整合AI</a><time datetime="2025-04-30T03:09:06.000Z" title="发表于 2025-04-30 11:09:06">2025-04-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/04/24/n8n%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8%E6%A1%88%E4%BE%8B/" title="简单使用n8n小案例"><img src="https://img.znxs.vip/study/202504301129812.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="简单使用n8n小案例"/></a><div class="content"><a class="title" href="/2025/04/24/n8n%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8%E6%A1%88%E4%BE%8B/" title="简单使用n8n小案例">简单使用n8n小案例</a><time datetime="2025-04-24T10:00:00.000Z" title="发表于 2025-04-24 18:00:00">2025-04-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/04/24/it%E8%B5%84%E6%BA%90/" title="技术学习资源"><img src="https://img.znxs.vip/study/202504241757453.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="技术学习资源"/></a><div class="content"><a class="title" href="/2025/04/24/it%E8%B5%84%E6%BA%90/" title="技术学习资源">技术学习资源</a><time datetime="2025-04-24T09:54:00.000Z" title="发表于 2025-04-24 17:54:00">2025-04-24</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;2023 - 2026 By znxs</span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.4.0-b1"></script><script src="/js/main.js?v=5.4.0-b1"></script><div class="js-pjax"><script>(() => {
+  let initFn = window.walineFn || null
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+
+  const destroyWaline = ele => ele.destroy()
+
+  const initWaline = (Fn, el = document, path = window.location.pathname) => {
+    const waline = Fn({
+      el: el.querySelector('#waline-wrap'),
+      serverURL: 'https://commons.znxs.vip',
+      pageview: false,
+      dark: 'html[data-theme="dark"]',
+      comment: false,
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || path
+    })
+
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyWaline = () => {
+        destroyWaline(waline)
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+  }
+
+  const loadWaline = (el, path) => {
+    if (initFn) initWaline(initFn, el, path)
+    else {
+      btf.getCSS('https://cdn.jsdelivr.net/npm/@waline/client@3.5.5/dist/waline.min.css')
+        .then(() => import('https://cdn.jsdelivr.net/npm/@waline/client@3.5.5/dist/waline.min.js'))
+        .then(({ init }) => {
+          initFn = init || Waline.init
+          initWaline(initFn, el, path)
+          window.walineFn = initFn
+        })
+    }
+  }
+
+  if (isShuoshuo) {
+    'Waline' === 'Waline'
+      ? window.shuoshuoComment = { loadComment: loadWaline } 
+      : window.loadOtherComment = loadWaline
+    return
+  }
+
+  if ('Waline' === 'Waline' || !false) {
+    if (false) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+    else setTimeout(loadWaline, 0)
+  } else {
+    window.loadOtherComment = loadWaline
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --> <script data-pjax>if(document.getElementById('recent-posts') && location.pathname =='/'){
+    
+    var parent = document.getElementById('recent-posts');
+    var child = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img src="https://img.znxs.vip/study/202502272025707.png" alt="https://img.znxs.vip/study/202502272025707.png"/></div><div class="blog-slider__content"><span class="blog-slider__code">2023-09-05</span><a class="blog-slider__title" href="2023/09/05/项目部署实践/">项目部署实践</a><div class="blog-slider__text">项目部署-实践</div><a class="blog-slider__button" href="2023/09/05/项目部署实践/">详情</a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img src="https://img.znxs.vip/study/202504301131330.jpeg" alt="https://img.znxs.vip/study/202504301131330.jpeg"/></div><div class="blog-slider__content"><span class="blog-slider__code">2024-05-19</span><a class="blog-slider__title" href="2024/05/19/NewIdea/">NewIdeas</a><div class="blog-slider__text">NewIdeas</div><a class="blog-slider__button" href="2024/05/19/NewIdea/">详情</a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img src="https://tse1-mm.cn.bing.net/th/id/OIP-C.R1Bi3fNDyYjLsXdg9OqoIAHaEo?w=315&h=196&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="https://tse1-mm.cn.bing.net/th/id/OIP-C.R1Bi3fNDyYjLsXdg9OqoIAHaEo?w=315&h=196&c=7&r=0&o=5&dpr=1.3&pid=1.7"/></div><div class="blog-slider__content"><span class="blog-slider__code">2023-09-03</span><a class="blog-slider__title" href="2023/09/03/两个设备同步一个git项目/">两个设备同步一个git项目</a><div class="blog-slider__text">两个设备同步一个git项目</div><a class="blog-slider__button" href="2023/09/03/两个设备同步一个git项目/">详情</a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载swiper')
+    parent.insertAdjacentHTML("afterbegin",child)}
+     </script>
+<script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiper.min.js"></script>
+<script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper@0.18/swiper/swiperindex.js"></script>
+<style></style><!-- hexo injector body_end end --></body></html>

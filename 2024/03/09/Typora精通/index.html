@@ -1,0 +1,591 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Typora精通 | znxs</title><meta name="author" content="znxs"><meta name="copyright" content="znxs"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="关于typora使用教程，非常详细，包括一些拓展应用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Typora精通">
+<meta property="og:url" content="http://znxs.vip/2024/03/09/Typora%E7%B2%BE%E9%80%9A/index.html">
+<meta property="og:site_name" content="znxs">
+<meta property="og:description" content="关于typora使用教程，非常详细，包括一些拓展应用">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://typoraio.cn/img/favicon-128.png">
+<meta property="article:published_time" content="2024-03-09T03:54:44.000Z">
+<meta property="article:modified_time" content="2025-12-25T01:58:51.314Z">
+<meta property="article:author" content="znxs">
+<meta property="article:tag" content="教程">
+<meta property="article:tag" content="typora">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://typoraio.cn/img/favicon-128.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Typora精通",
+  "url": "http://znxs.vip/2024/03/09/Typora%E7%B2%BE%E9%80%9A/",
+  "image": "https://typoraio.cn/img/favicon-128.png",
+  "datePublished": "2024-03-09T03:54:44.000Z",
+  "dateModified": "2025-12-25T01:58:51.314Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "znxs",
+      "url": "http://znxs.vip/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="http://znxs.vip/2024/03/09/Typora%E7%B2%BE%E9%80%9A/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.4.0-b1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":500,"languages":{"author":"作者: znxs","link":"链接: ","source":"来源: znxs","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Typora精通',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiper.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiperstyle.css"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg" style="background-image: url(/url(https:/img.znxs.vip/study/202408241129726_Stepsister.jpg));"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://img.znxs.vip/znxs/avatar_%E7%A5%9E%E9%87%8C.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">47</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">61</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://img.znxs.vip/study/typora_bg_logo.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/favicon.ico" alt="Logo"><span class="site-name">znxs</span></a><a class="nav-page-title" href="/"><span class="site-name">Typora精通</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Typora精通</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-03-09T03:54:44.000Z" title="发表于 2024-03-09 11:54:44">2024-03-09</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-12-25T01:58:51.314Z" title="更新于 2025-12-25 09:58:51">2025-12-25</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">2.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>9分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="Typora（-‘taɪpəura-）"><a href="#Typora（-‘taɪpəura-）" class="headerlink" title="Typora（&#x2F;‘taɪpəura&#x2F;）"></a>Typora（&#x2F;‘taɪpəura&#x2F;）</h1><p><img src="https://img.znxs.vip/study/typora_bg_logo.jpg" alt="typora"></p>
+<h3 id="一、Typora基本语法指南"><a href="#一、Typora基本语法指南" class="headerlink" title="一、Typora基本语法指南"></a>一、Typora基本语法指南</h3><p>[TOC]</p>
+<h3 id="Typora简介"><a href="#Typora简介" class="headerlink" title="Typora简介"></a>Typora简介</h3><p>Typora是一款轻便简洁的Markdown编辑器，支持即时渲染技术，这也是与其他Markdown编辑器最显著的区别。即时渲染使得你写Markdown就想是写Word文档一样流畅自如，不像其他编辑器的有编辑栏和显示栏。</p>
+<ul>
+<li>Typora删除了预览窗口，以及所有其他不必要的干扰。取而代之的是实时预览。</li>
+<li>Markdown的语法因不同的解析器或编辑器而异，Typora使用的是GitHub Flavored Markdown。</li>
+</ul>
+<h3 id="Markdown介绍"><a href="#Markdown介绍" class="headerlink" title="Markdown介绍"></a>Markdown介绍</h3><ul>
+<li>Markdown 是一种轻量级标记语言，它允许人们使用易读易写的纯文本格式编写文档。</li>
+<li>Markdown 语言在 2004 由约翰·格鲁伯（英语：John Gruber）创建。</li>
+<li>Markdown 编写的文档可以导出 HTML 、Word、图像、PDF、Epub 等多种格式的文档。</li>
+<li>Markdown 编写的文档后缀为 <code>.md</code>, <code>.markdown</code>。</li>
+</ul>
+<h2 id="Typora基本技巧"><a href="#Typora基本技巧" class="headerlink" title="Typora基本技巧"></a>Typora基本技巧</h2><h3 id="常用快捷键"><a href="#常用快捷键" class="headerlink" title="常用快捷键"></a>常用快捷键</h3><ul>
+<li>加粗： <code>Ctrl + B</code></li>
+<li>撤销： <code>Ctrl + Z</code></li>
+<li>字体倾斜 ：<code>Ctrl+I</code></li>
+<li>下划线：<code>Ctrl+U</code></li>
+<li>多级标题： <code>Ctrl + 1~6</code></li>
+<li>有序列表：<code>Ctrl + Shift + [</code></li>
+<li>无序列表：<code>Ctrl + Shift + ]</code></li>
+<li>降级快捷键 ：<code>Tab</code></li>
+<li>升级快捷键：<code>Shift + Tab</code></li>
+<li>插入链接： <code>Ctrl + K</code></li>
+<li>插入公式： <code>Ctrl + Shift + M</code></li>
+<li>行内代码： <code>Ctrl + Shift + K</code></li>
+<li>插入图片： <code>Ctrl + Shift + I</code></li>
+<li>返回Typora顶部：<code>Ctrl+Home</code></li>
+<li>返回Typora底部 ：<code>Ctrl+End</code></li>
+<li>创建表格 ：<code>Ctrl+T</code></li>
+<li>选中某句话 ：<code>Ctrl+L</code></li>
+<li>选中某个单词 ：<code>Ctrl+D</code></li>
+<li>选中相同格式的文字 ：<code>Ctrl+E</code></li>
+<li>搜索: <code>Ctrl+F</code></li>
+<li>搜索并替换 ：<code>Ctrl+H</code></li>
+<li>删除线 ：<code>Alt+Shift+5</code></li>
+<li>引用 ：<code>Ctrl+Shift+Q</code></li>
+<li>生成目录：<code>[TOC]+Enter</code></li>
+</ul>
+<p>注：一些实体符号需要在实体符号之前加” \ ”才能够显示</p>
+<h3 id="菜单"><a href="#菜单" class="headerlink" title="菜单"></a>菜单</h3><p>输入[TOC]即可产生菜单，菜单会自动更新</p>
+<h3 id="区域元素"><a href="#区域元素" class="headerlink" title="区域元素"></a>区域元素</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">YAML FONT Matters</span><br></pre></td></tr></table></figure>
+
+<p>在文章的最上方输入—，按换行键产生，然后在里面输入内容即可。</p>
+<h3 id="段落"><a href="#段落" class="headerlink" title="段落"></a>段落</h3><p>按换行键<code>Enter</code>建立新的一行,按<code>Shift</code>+<code>Enter</code>可以创建一个比段落间距更小的行间距。可在行尾插入打断线，禁止向后插入</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">打断线&lt;br/&gt;后面的内容将自动换行</span><br></pre></td></tr></table></figure>
+
+<h3 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h3><p>开头#的个数表示，空格+文字。标题有1~6个级别，#表示开始，按换行键结束</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 一级标题 快捷键为 Ctrl + 1</span><br><span class="line">## 二级标题 快捷键为 Ctrl + 2</span><br><span class="line">......</span><br><span class="line">###### 六级标题 快捷键为 Ctrl + 6</span><br></pre></td></tr></table></figure>
+
+<h3 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h3><p>斜体以**或__括住</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*这是斜体字体1*_这是斜体字体2_</span><br></pre></td></tr></table></figure>
+
+<p><em>这是斜体字体1</em><br><em>这是斜体字体2</em></p>
+<p>加粗<br>开头<code>**</code>，结尾<code>**</code>。<br>或者开头<code>__</code>,结尾<code>__</code>(两个短横线)。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">**这是加粗字体1** __这是加粗字体2__</span><br></pre></td></tr></table></figure>
+
+<p><strong>这是加粗字体1</strong><br><strong>这是加粗字体2</strong></p>
+<p>删除线<br>开头<code>~~</code>，结尾<code>~~</code>。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~~这是错误文字~~</span><br></pre></td></tr></table></figure>
+
+<p><del>这是错误文字</del></p>
+<p>下划线</p>
+<p>使用HTML标签<u>下划线</u></p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;u&gt;下划线&lt;/u&gt;</span><br></pre></td></tr></table></figure>
+
+<p><u>下划线</u></p>
+<p>高亮</p>
+<p>&#x3D;&#x3D;需要自己在偏好设置里面打开这项功能&#x3D;&#x3D;</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">==高亮==</span><br><span class="line">不高亮</span><br></pre></td></tr></table></figure>
+
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>行内输入代码块快捷键： <code>Ctrl + Shift + K</code></p>
+<ol>
+<li>开头&#96;&#96;&#96;+语言名，开启代码块，换行键换行，光标下移键跳出<br>示例：</li>
+</ol>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(&quot;hello,python!&quot;&quot;)</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>用两个&#39;在正常段落中表示代码  快捷键 <strong>[ctrl+shift+&#96;]</strong><br>例如：</li>
+</ol>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Use the `printf()`function.</span><br></pre></td></tr></table></figure>
+
+<p>Use the <code>printf()</code>function.</p>
+<h3 id="数学式"><a href="#数学式" class="headerlink" title="数学式"></a>数学式</h3><p>打开Typora选择数学模块</p>
+<ul>
+<li>点击“段落”—&gt;“公式块”</li>
+<li>快捷键Ctrl+Shift+m</li>
+<li><code>“$$”+回车</code></li>
+</ul>
+<p>以上三种方式都能打开数学公式的编辑栏。</p>
+<p>示例：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入$，然后按ESC键，之后输入Tex命令，可预览</span><br><span class="line">例如：</span><br><span class="line">$\lim_&#123;x\to\infty&#125;\exp(-x)=0$</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic2.zhimg.com/80/v2-c0139796d5848b706c9f2f4d79c7a749_720w.webp" alt="img"></p>
+<p>下标使用_</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">H-2O</span><br></pre></td></tr></table></figure>
+
+<p>$$<br>H_2O<br>$$</p>
+<p>上标使用^</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">y^2=4</span><br></pre></td></tr></table></figure>
+
+<p>$$<br>y^2&#x3D;4<br>$$</p>
+<h3 id="表情"><a href="#表情" class="headerlink" title="表情"></a>表情</h3><p>Typora语法支持添加emoji表情，输入不同的符号码（两个冒号包围的字符）可以显示出不同的表情。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">以:开始，然后输入表情的英文单词,以：结尾，将直接输入该表情.例如：</span><br><span class="line">:smile:</span><br><span class="line">:cry:</span><br><span class="line">:happy:</span><br></pre></td></tr></table></figure>
+
+<p>:smile::cry::happy:</p>
+<h3 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h3><p>快捷键  <code>ctrl+T</code></p>
+<p>开头|+列名+|+列名+|+换行键，创建一个2*2表格，<code>Ctrl+Enter</code>可建立新行。</p>
+<p>示例：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">|第一列|第二列|</span><br></pre></td></tr></table></figure>
+
+<h3 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h3><p>输入 <code>***</code> 或者 <code>---</code>,按换行键换行，即可绘制一条水平线。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">***---</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>上下是水平线</p>
+<h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><p>开头&gt;表示，空格+文字，按换行键换行，双按换行跳出</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; 引注1</span><br><span class="line">&gt; ···</span><br><span class="line">&gt; 引注2</span><br><span class="line">&gt;还有一行，双按换行键跳出引注模式</span><br></pre></td></tr></table></figure>
+
+<p>示例：</p>
+<blockquote>
+<p>引注1<br>···<br>引注2还有一行，双按换行键跳出引注模式</p>
+</blockquote>
+<p>普通引用</p>
+<blockquote>
+<p>空格 + 引用文字：在引用的文字前加&gt;+空格即可，引用可以嵌套。</p>
+</blockquote>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; 引用文本前使用 [大于号+空格]</span><br><span class="line">&gt; 这行可以不加，新起一行都要加上哦</span><br><span class="line">&gt;这是引用的内容</span><br><span class="line">&gt;&gt;这是引用的内容</span><br></pre></td></tr></table></figure>
+
+<p>示例：</p>
+<blockquote>
+<p>引用文本前使用 [大于号+空格]这行可以不加，新起一行都要加上哦<br>这是引用的内容<br>这是引用的内容</p>
+</blockquote>
+<p>列表中使用</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">* 第一项   </span><br><span class="line">&gt; 引用1    </span><br><span class="line">&gt; 引用2</span><br><span class="line">* 第二项</span><br></pre></td></tr></table></figure>
+
+<p>示例：</p>
+<ul>
+<li>第一项</li>
+</ul>
+<blockquote>
+<p>引用1引用2</p>
+</blockquote>
+<ul>
+<li>第二项</li>
+</ul>
+<p>引用里嵌套引用</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; 最外层引用</span><br><span class="line">&gt; &gt; 多一个 </span><br><span class="line">&gt; 嵌套一层引用</span><br><span class="line">&gt; &gt; &gt; 可以嵌套很多层</span><br></pre></td></tr></table></figure>
+
+<p>引用里嵌套列表</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; - 这是引用里嵌套的一个列表</span><br><span class="line">&gt; - 还可以有子列表</span><br><span class="line">&gt;     * 子列表需要从 - 之后延后四个空格开始</span><br></pre></td></tr></table></figure>
+
+<p>引用里嵌套代码块</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;     同样的，在前面加四个空格形成代码块</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>或者使用 &#96;&#96;&#96; 形成代码块</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">### 脚注</span><br><span class="line"></span><br><span class="line">在需要添加脚注的文字后面+[+^+序列+]，注释的产生可以鼠标放置其上单击自动产生，添加信息</span><br><span class="line"></span><br><span class="line">或人工添加+[+^+序列+]+:</span><br><span class="line"></span><br><span class="line">```text</span><br><span class="line">脚注产生的方法[^footnote].</span><br><span class="line">[^footnote]:这个就是&quot;脚注&quot;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>脚注的产生方法[1]</p>
+<h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p>链接<br>输入网址，单击链接，展开后可编辑<br>ctr+单击，打开链接<br>例如：<a href="https://link.zhihu.com/?target=https://www.baidu.com">https://www.baidu.com</a></p>
+<p>常用链接方法</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">文字链接 [链接名称](http://链接网址)网址链接 &lt;http://链接网址&gt;</span><br></pre></td></tr></table></figure>
+
+<p>示例效果：百度</p>
+<p>超链接</p>
+<p>格式1：用[ ]括住要超链接的内容，紧接着用( )括住超链接源+名字，超链接源后面+超链接命名<br>同样ctrl+单击，打开链接例如：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这是[百度](https://www.baidu.com)官网</span><br></pre></td></tr></table></figure>
+
+<p>这是 百度官网格式2：超链接 title可加可不加</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">This is [an example](http://example.com/ &quot;Title&quot;) inline link.</span><br><span class="line">[This link](http://example.net/) has no title attribute.</span><br></pre></td></tr></table></figure>
+
+<p>This is an example inline link.This link has no title attribute.</p>
+<p>高级链接技巧</p>
+<p>使用[+超链接文字+]+[+标签+]，创建可定义链接<br>ctrl+单击，打开链接。示例1：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这是[百度][id][id]:https://www.baidu.com</span><br></pre></td></tr></table></figure>
+
+<p>这是百度示例2：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">这个链接用 1 作为网址变量 [Google][1].</span><br><span class="line">这个链接用 yahoo 作为网址变量 [Yahoo!][yahoo].</span><br><span class="line">然后在文档的结尾为变量赋值（网址）  </span><br><span class="line">[1]: http://www.google.com/  </span><br><span class="line">[yahoo]: http://www.yahoo.com/</span><br></pre></td></tr></table></figure>
+
+<h3 id="URLs"><a href="#URLs" class="headerlink" title="URLs"></a>URLs</h3><p>用&lt;&gt;括住url，可手动设置url对于标准URLs，可自动识别</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;www.baidu.com&gt;</span><br></pre></td></tr></table></figure>
+
+<p>&lt;<a href="http://www.baidu.com>">www.baidu.com&gt;</a></p>
+<h3 id="序列"><a href="#序列" class="headerlink" title="序列"></a>序列</h3><p>开头*&#x2F;+&#x2F;- 加空格+文字，可以创建无序序列，换行键换行，删除键+shift+tab跳出<br>开头1.加空格+后接文字，可以创建有序序列例：</p>
+<ul>
+<li>第一个无序序列</li>
+<li>第二个无序序列</li>
+<li>······</li>
+</ul>
+<ol>
+<li>第一个有序序列</li>
+<li>第二个有序序列</li>
+<li>······</li>
+</ol>
+<p>可选序列</p>
+<p>开头序列+空格+[ ]+空格+文字，换行键换行，删除键+shift+tab跳出例如：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- [ ] 第一个可选序列</span><br><span class="line">- [ ] 第二个可选序列</span><br><span class="line">- [ ] 第三个可选序列</span><br><span class="line">- [x] 第四个可选序列</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>第一个可选序列</li>
+<li>第二个可选序列</li>
+<li>第三个可选序列</li>
+<li>第四个可选序列<br>总结：先输入减号，然后输入空格，之后就变成了黑色圆点，在输入[]，在中间加个空格，回车就可以注：任务列表无快捷键，可以点击菜单栏段落，任务列表。</li>
+</ul>
+<h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3><blockquote>
+<p>Typora文本文档中有使用图片内容，如果需要发布在各个兼容Markdown的软件平台，需要预先上传文档中的图片至图床，再通过对图床的图片链接调用，才能正常显示，否则各个平台将无法看到该文档图片。<br>免费图床网址：<a href="https://link.zhihu.com/?target=https://sm.ms/">https://sm.ms/</a>图床设置：[Typora图床自动上传图片设置篇]</p>
+</blockquote>
+<ol>
+<li>手动添加：跟链接的方法区别在于前面加了个感叹号 <code>!</code>，这样是不是觉得好记多了呢？</li>
+</ol>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![图片名称](http://图片网址)</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>当然，你也可以像网址那样对图片网址使用变量</li>
+</ol>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">这个链接用 1 作为网址变量 [Google][1].</span><br><span class="line">然后在文档的结尾位变量赋值（网址） </span><br><span class="line"></span><br><span class="line">[1]: http://www.google.com/logo.png</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>除了以上2种方式之外，还可以直接将图片拖拽进来，自动生成链接。</li>
+</ol>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">![显示的文字](C:\Users\Hider\Desktop\echart.png &quot;图片标题&quot;)</span><br><span class="line">![显示的文字](C:\Users\Hider\Desktop\echart.png)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Markdown其他效果测试"><a href="#Markdown其他效果测试" class="headerlink" title="Markdown其他效果测试"></a>Markdown其他效果测试</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">details</span>&gt;</span></span></span><br><span class="line"><span class="code">    &lt;summary&gt;隐藏内容的标题&lt;/summary&gt;</span></span><br><span class="line"><span class="code">    ## 显示隐藏内容  这个不能使用makedown语法</span></span><br><span class="line"><span class="code">&lt;/details&gt;</span></span><br></pre></td></tr></table></figure>
+
+<details>
+    <summary>隐藏内容的标题</summary>
+    ## 显示隐藏内容
+</details>
+<details>   
+    <summary>点击时的区域标题：点击查看详细内容</summary>  
+    **加粗**
+</details>
+<span style='color:red'>This is red</span>   //字体颜色
+ 漢  ㄏㄢˋ  <ruby> 漢 <rt> ㄏㄢˋ </rt> </ruby> // 特殊字
+<kbd>Ctrl</kbd>+<kbd>F9</kbd>  // 按键标识
+<span style="font-size:2rem; background:yellow;">**Bigger**</span> //字体大小和背景
+
+<p><font face="微软雅黑" color="red" size="6">字体及字体颜色和大小</font><br><font color="#0000ff">字体颜色</font></p>
+<p align="left">居左文本</p>
+<p align="center">居中文本</p>
+<p align="right">居右文本</p>
+
+
+
+
+
+<h3 id="导出-post-office"><a href="#导出-post-office" class="headerlink" title="导出:post_office:"></a>导出:post_office:</h3><p>当你导出时发现乱糟糟的😥，明明是开头，缺是页尾，明明是结尾确实页头，这时候你就需要分页符咯！</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;page-break-after:always&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><span style="color: #fdbcc0;">直接就这样使用</span> 👇（看不见吧~）</p>
+<div style="page-break-after:always"></div>
+
+<h3 id="2023年16大引人注目颜色"><a href="#2023年16大引人注目颜色" class="headerlink" title="2023年16大引人注目颜色"></a>2023年16大引人注目颜色</h3><div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
+        <!-- 第一行 -->
+        <div style="width: 20%; margin-bottom: 1em; text-align: center;">
+            <div style="height: 50px; background-color: #f46b00; margin-bottom: 5px;"></div>
+            <div style="font-size: 0.9em; color: #f46b00;">柚子色 - Tangelo (#f46b00)</div>
+        </div>
+        <div style="width: 20%; margin-bottom: 1em; text-align: center;">
+            <div style="height: 50px; background-color: #fdbcc0; margin-bottom: 5px;"></div>
+            <div style="font-size: 0.9em; color: #fdbcc0;">水晶玫瑰粉 - Crystal Rose (#fdbcc0)</div>
+        </div>
+    <!-- 第二行 -->
+    <div style="width: 20%; margin-bottom: 1em; text-align: center;">
+        <div style="height: 50px; background-color: #00a92a; margin-bottom: 5px;"></div>
+        <div style="font-size: 0.9em; color: #00a92a;">经典绿 - Green (#00a92a)</div>
+    </div>
+    <div style="width: 20%; margin-bottom: 1em; text-align: center;">
+        <div style="height: 50px; background-color: #8ea0ac; margin-bottom: 5px;"></div>
+        <div style="font-size: 0.9em; color: #8ea0ac;">夏日之歌蓝 - Summer Song (#8ea0ac)</div>
+    </div>
+ </div>
+
+<div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
+        <!-- 第一行 -->
+        <div style="width: 20%; margin-bottom: 1em; text-align: center;">
+            <div style="height: 50px; background-color: #f07c62; margin-bottom: 5px;"></div>
+            <div style="font-size: 0.9em; color: #f07c62;">桃粉色 - Peach Pink (#f07c62)</div>
+        </div>
+        <div style="width: 20%; margin-bottom: 1em; text-align: center;">
+            <div style="height: 50px; background-color: #00FF00; margin-bottom: 5px;"></div>
+            <div style="font-size: 0.9em; color: #00FF00;">绿色 - Green (#00FF00)</div>
+        </div>
+        <!-- 其他三个颜色元素... -->
+ <!-- 第二行 -->
+    <div style="width: 20%; margin-bottom: 1em; text-align: center;">
+        <div style="height: 50px; background-color: #f6d100; margin-bottom: 5px;"></div>
+        <div style="font-size: 0.9em; color: #f6d100;">帝国黄 - Empire Yellow (#f6d100)</div>
+    </div>
+    <div style="width: 20%; margin-bottom: 1em; text-align: center;">
+        <div style="height: 50px; background-color: #c2dc39; margin-bottom: 5px;"></div>
+        <div style="font-size: 0.9em; color: #c2dc39;">爱情鸟绿 - Love Bird (#c2dc39)</div>
+    </div>
+    <!-- 其他两个颜色元素... -->
+</div>
+
+<div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
+        <!-- 第一行 -->
+        <div style="width: 20%; margin-bottom: 1em; text-align: center;">
+            <div style="height: 50px; background-color: #587a97; margin-bottom: 5px;"></div>
+            <div style="font-size: 0.9em; color: #587a97;">长存的蓝色 - Blue Perennial (#587a97)</div>
+        </div>
+        <div style="width: 20%; margin-bottom: 1em; text-align: center;">
+            <div style="height: 50px; background-color: #cf2972; margin-bottom: 5px;"></div>
+            <div style="font-size: 0.9em; color: #cf2972;">红头菜紫 - BeetrootPurple (#cf2972)</div>
+        </div>
+        <!-- 其他三个颜色元素... -->
+ <!-- 第二行 -->
+    <div style="width: 20%; margin-bottom: 1em; text-align: center;">
+        <div style="height: 50px; background-color: #d11619; margin-bottom: 5px;"></div>
+        <div style="font-size: 0.9em; color: #d11619;">烈艳红 - FieryRed (#d11619)</div>
+    </div>
+    <div style="width: 20%; margin-bottom: 1em; text-align: center;">
+        <div style="height: 50px; background-color: #c8e2e3; margin-bottom: 5px;"></div>
+        <div style="font-size: 0.9em; color: #c8e2e3;">天光蓝 -ShyLight (#c8e2e3)</div>
+    </div>
+    <!-- 其他两个颜色元素... -->
+</div>
+
+<div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
+        <!-- 第一行 -->
+        <div style="width: 20%; margin-bottom: 1em; text-align: center;">
+            <div style="height: 50px; background-color: #f6d6c3; margin-bottom: 5px;"></div>
+            <div style="font-size: 0.9em; color: #f6d6c3;">香草奶油粉 - VanillaCream (#f6d6c3)</div>
+        </div>
+        <div style="width: 20%; margin-bottom: 1em; text-align: center;">
+            <div style="height: 50px; background-color: #d6cace; margin-bottom: 5px;"></div>
+            <div style="font-size: 0.9em; color: #d6cace;">丁香灰 - GrayLilac (#d6cace)</div>
+        </div>
+        <!-- 其他三个颜色元素... -->
+ <!-- 第二行 -->
+    <div style="width: 20%; margin-bottom: 1em; text-align: center;">
+        <div style="height: 50px; background-color: #928f70; margin-bottom: 5px;"></div>
+        <div style="font-size: 0.9em; color: #928f70;">韭菜绿 - LeekGreen (#928f70)</div>
+    </div>
+    <div style="width: 20%; margin-bottom: 1em; text-align: center;">
+        <div style="height: 50px; background-color: #ad8467; margin-bottom: 5px;"></div>
+        <div style="font-size: 0.9em; color: #ad8467;">玛奇朵棕 - Macchiato (#ad8467)</div>
+    </div>
+    <!-- 其他两个颜色元素... -->
+</div>
+
+<div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
+        <!-- 第一行 -->
+        <div style="width: 20%; margin-bottom: 1em; text-align: center;">
+            <div style="height: 50px; background-color: #4d000a; margin-bottom: 5px;"></div>
+            <div style="font-size: 0.9em; color: #4d000a;">波多尔红 - PodoerRed (#4d000a)</div>
+        </div>
+        <div style="width: 20%; margin-bottom: 1em; text-align: center;">
+            <div style="height: 50px; background-color: #002FA7; margin-bottom: 5px;"></div>
+            <div style="font-size: 0.9em; color: #002FA7;">克莱因蓝  -     KleinBlue (#002FA7)</div>
+        </div>
+        <!-- 其他三个颜色元素... -->
+ <!-- 第二行 -->
+    <div style="width: 20%; margin-bottom: 1em; text-align: center;">
+        <div style="height: 50px; background-color: #029f9e; margin-bottom: 5px;"></div>
+        <div style="font-size: 0.9em; color: #029f9e;">马尔斯绿 - MarrsGreen (#029f9e)</div>
+    </div>
+    <div style="width: 20%; margin-bottom: 1em; text-align: center;">
+        <div style="height: 50px; background-color: #482d1b; margin-bottom: 5px;"></div>
+        <div style="font-size: 0.9em; color: #482d1b;">范戴克棕 - FandiequeBrown (#482d1b)</div>
+    </div>
+    <!-- 其他两个颜色元素... -->
+</div>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://znxs.vip">znxs</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://znxs.vip/2024/03/09/Typora%E7%B2%BE%E9%80%9A/">http://znxs.vip/2024/03/09/Typora%E7%B2%BE%E9%80%9A/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://znxs.vip" target="_blank">znxs</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%95%99%E7%A8%8B/">教程</a><a class="post-meta__tags" href="/tags/typora/">typora</a></div><div class="post-share"><div class="social-share" data-image="https://typoraio.cn/img/favicon-128.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.4/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.4/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2024/01/30/%E8%AE%A1%E5%88%92%E9%A1%B9%E7%9B%AE%E5%B8%B8%E7%94%A8%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/" title="计划项目常用技术笔记"><img class="cover" src="https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4wwtz?ver=e92c" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">计划项目常用技术笔记</div></div><div class="info-2"><div class="info-item-1">记录了一些项目常用的技术，配置，方便开发时进行快速配置和查找</div></div></div></a><a class="pagination-related" href="/2024/04/15/%E8%8B%B1%E8%AF%AD%E5%A4%8D%E4%B9%A0-%E5%85%B6%E4%B8%80/" title="英语复习-其一"><img class="cover" src="https://img.znxs.vip/study/next_station_success.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">英语复习-其一</div></div><div class="info-2"><div class="info-item-1">专升本英语复习，手写万字总结，语法概况，例子</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2025/04/30/SpringBoot%20%E6%95%B4%E5%90%88AI/" title="SpringBoot整合AI"><img class="cover" src="https://img.znxs.vip/study/202504301108692.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="fas fa-history fa-fw"></i> 2025-12-25</div><div class="info-item-2">SpringBoot整合AI</div></div><div class="info-2"><div class="info-item-1">Spring boot 整合常见的各类大模型（国内）</div></div></div></a><a class="pagination-related" href="/2025/04/24/n8n%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8%E6%A1%88%E4%BE%8B/" title="简单使用n8n小案例"><img class="cover" src="https://img.znxs.vip/study/202504301129812.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="fas fa-history fa-fw"></i> 2025-12-25</div><div class="info-item-2">简单使用n8n小案例</div></div><div class="info-2"><div class="info-item-1">前几天看到了这个自动化程序项目，感觉很有意思，花了一上午部署学习了一下，于是有了下面这篇部署构建第一个程序的教程</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://img.znxs.vip/znxs/avatar_%E7%A5%9E%E9%87%8C.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">znxs</div><div class="author-info-description">落子无悔</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">47</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">61</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/znxs"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Typora%EF%BC%88-%E2%80%98ta%C9%AAp%C9%99ura-%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">Typora（&#x2F;‘taɪpəura&#x2F;）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81Typora%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E6%8C%87%E5%8D%97"><span class="toc-number">1.0.1.</span> <span class="toc-text">一、Typora基本语法指南</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Typora%E7%AE%80%E4%BB%8B"><span class="toc-number">1.0.2.</span> <span class="toc-text">Typora简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Markdown%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.0.3.</span> <span class="toc-text">Markdown介绍</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Typora%E5%9F%BA%E6%9C%AC%E6%8A%80%E5%B7%A7"><span class="toc-number">1.1.</span> <span class="toc-text">Typora基本技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-number">1.1.1.</span> <span class="toc-text">常用快捷键</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8F%9C%E5%8D%95"><span class="toc-number">1.1.2.</span> <span class="toc-text">菜单</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%BA%E5%9F%9F%E5%85%83%E7%B4%A0"><span class="toc-number">1.1.3.</span> <span class="toc-text">区域元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AE%B5%E8%90%BD"><span class="toc-number">1.1.4.</span> <span class="toc-text">段落</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%87%E9%A2%98"><span class="toc-number">1.1.5.</span> <span class="toc-text">标题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E4%BD%93"><span class="toc-number">1.1.6.</span> <span class="toc-text">字体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-number">1.1.7.</span> <span class="toc-text">代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E5%AD%A6%E5%BC%8F"><span class="toc-number">1.1.8.</span> <span class="toc-text">数学式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A8%E6%83%85"><span class="toc-number">1.1.9.</span> <span class="toc-text">表情</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A8%E6%A0%BC"><span class="toc-number">1.1.10.</span> <span class="toc-text">表格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E5%89%B2%E7%BA%BF"><span class="toc-number">1.1.11.</span> <span class="toc-text">分割线</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E7%94%A8"><span class="toc-number">1.1.12.</span> <span class="toc-text">引用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%93%BE%E6%8E%A5"><span class="toc-number">1.1.13.</span> <span class="toc-text">链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#URLs"><span class="toc-number">1.1.14.</span> <span class="toc-text">URLs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%8F%E5%88%97"><span class="toc-number">1.1.15.</span> <span class="toc-text">序列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E7%89%87"><span class="toc-number">1.1.16.</span> <span class="toc-text">图片</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Markdown%E5%85%B6%E4%BB%96%E6%95%88%E6%9E%9C%E6%B5%8B%E8%AF%95"><span class="toc-number">1.2.</span> <span class="toc-text">Markdown其他效果测试</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BC%E5%87%BA-post-office"><span class="toc-number">1.2.1.</span> <span class="toc-text">导出:post_office:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2023%E5%B9%B416%E5%A4%A7%E5%BC%95%E4%BA%BA%E6%B3%A8%E7%9B%AE%E9%A2%9C%E8%89%B2"><span class="toc-number">1.2.2.</span> <span class="toc-text">2023年16大引人注目颜色</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/12/24/%E7%BB%93%E5%B7%B4%E5%81%9C%E8%AF%8D%E5%BA%93/" title="结巴停词库">结巴停词库</a><time datetime="2025-12-24T06:20:07.000Z" title="发表于 2025-12-24 14:20:07">2025-12-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/05/07/RAG-%E7%9F%A5%E8%AF%86%E5%BA%93%E6%97%A0%E6%B3%95%E5%91%BD%E4%B8%AD/" title="RAG 知识库无法命中"><img src="https://img-blog.csdnimg.cn/img_convert/ea3f6f8399f3fdd12e3321434e792b66.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="RAG 知识库无法命中"/></a><div class="content"><a class="title" href="/2025/05/07/RAG-%E7%9F%A5%E8%AF%86%E5%BA%93%E6%97%A0%E6%B3%95%E5%91%BD%E4%B8%AD/" title="RAG 知识库无法命中">RAG 知识库无法命中</a><time datetime="2025-05-07T11:17:32.000Z" title="发表于 2025-05-07 19:17:32">2025-05-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/04/30/SpringBoot%20%E6%95%B4%E5%90%88AI/" title="SpringBoot整合AI"><img src="https://img.znxs.vip/study/202504301108692.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SpringBoot整合AI"/></a><div class="content"><a class="title" href="/2025/04/30/SpringBoot%20%E6%95%B4%E5%90%88AI/" title="SpringBoot整合AI">SpringBoot整合AI</a><time datetime="2025-04-30T03:09:06.000Z" title="发表于 2025-04-30 11:09:06">2025-04-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/04/24/n8n%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8%E6%A1%88%E4%BE%8B/" title="简单使用n8n小案例"><img src="https://img.znxs.vip/study/202504301129812.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="简单使用n8n小案例"/></a><div class="content"><a class="title" href="/2025/04/24/n8n%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8%E6%A1%88%E4%BE%8B/" title="简单使用n8n小案例">简单使用n8n小案例</a><time datetime="2025-04-24T10:00:00.000Z" title="发表于 2025-04-24 18:00:00">2025-04-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/04/24/it%E8%B5%84%E6%BA%90/" title="技术学习资源"><img src="https://img.znxs.vip/study/202504241757453.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="技术学习资源"/></a><div class="content"><a class="title" href="/2025/04/24/it%E8%B5%84%E6%BA%90/" title="技术学习资源">技术学习资源</a><time datetime="2025-04-24T09:54:00.000Z" title="发表于 2025-04-24 17:54:00">2025-04-24</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;2023 - 2026 By znxs</span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.4.0-b1"></script><script src="/js/main.js?v=5.4.0-b1"></script><div class="js-pjax"><script>(() => {
+  let initFn = window.walineFn || null
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+
+  const destroyWaline = ele => ele.destroy()
+
+  const initWaline = (Fn, el = document, path = window.location.pathname) => {
+    const waline = Fn({
+      el: el.querySelector('#waline-wrap'),
+      serverURL: 'https://commons.znxs.vip',
+      pageview: false,
+      dark: 'html[data-theme="dark"]',
+      comment: false,
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || path
+    })
+
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyWaline = () => {
+        destroyWaline(waline)
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+  }
+
+  const loadWaline = (el, path) => {
+    if (initFn) initWaline(initFn, el, path)
+    else {
+      btf.getCSS('https://cdn.jsdelivr.net/npm/@waline/client@3.5.5/dist/waline.min.css')
+        .then(() => import('https://cdn.jsdelivr.net/npm/@waline/client@3.5.5/dist/waline.min.js'))
+        .then(({ init }) => {
+          initFn = init || Waline.init
+          initWaline(initFn, el, path)
+          window.walineFn = initFn
+        })
+    }
+  }
+
+  if (isShuoshuo) {
+    'Waline' === 'Waline'
+      ? window.shuoshuoComment = { loadComment: loadWaline } 
+      : window.loadOtherComment = loadWaline
+    return
+  }
+
+  if ('Waline' === 'Waline' || !false) {
+    if (false) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+    else setTimeout(loadWaline, 0)
+  } else {
+    window.loadOtherComment = loadWaline
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --> <script data-pjax>if(document.getElementById('recent-posts') && location.pathname =='/'){
+    
+    var parent = document.getElementById('recent-posts');
+    var child = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img src="https://img.znxs.vip/study/202502272025707.png" alt="https://img.znxs.vip/study/202502272025707.png"/></div><div class="blog-slider__content"><span class="blog-slider__code">2023-09-05</span><a class="blog-slider__title" href="2023/09/05/项目部署实践/">项目部署实践</a><div class="blog-slider__text">项目部署-实践</div><a class="blog-slider__button" href="2023/09/05/项目部署实践/">详情</a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img src="https://img.znxs.vip/study/202504301131330.jpeg" alt="https://img.znxs.vip/study/202504301131330.jpeg"/></div><div class="blog-slider__content"><span class="blog-slider__code">2024-05-19</span><a class="blog-slider__title" href="2024/05/19/NewIdea/">NewIdeas</a><div class="blog-slider__text">NewIdeas</div><a class="blog-slider__button" href="2024/05/19/NewIdea/">详情</a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img src="https://tse1-mm.cn.bing.net/th/id/OIP-C.R1Bi3fNDyYjLsXdg9OqoIAHaEo?w=315&h=196&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="https://tse1-mm.cn.bing.net/th/id/OIP-C.R1Bi3fNDyYjLsXdg9OqoIAHaEo?w=315&h=196&c=7&r=0&o=5&dpr=1.3&pid=1.7"/></div><div class="blog-slider__content"><span class="blog-slider__code">2023-09-03</span><a class="blog-slider__title" href="2023/09/03/两个设备同步一个git项目/">两个设备同步一个git项目</a><div class="blog-slider__text">两个设备同步一个git项目</div><a class="blog-slider__button" href="2023/09/03/两个设备同步一个git项目/">详情</a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载swiper')
+    parent.insertAdjacentHTML("afterbegin",child)}
+     </script>
+<script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiper.min.js"></script>
+<script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper@0.18/swiper/swiperindex.js"></script>
+<style></style><!-- hexo injector body_end end --></body></html>

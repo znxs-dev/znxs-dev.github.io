@@ -1,0 +1,522 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>基于python beautifulsoup的爬虫教程 | znxs</title><meta name="author" content="znxs"><meta name="copyright" content="znxs"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="针对与request请求式获取网页内容，采用beautiful soup技术进行爬虫">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于python beautifulsoup的爬虫教程">
+<meta property="og:url" content="http://znxs.vip/2025/01/19/%E5%9F%BA%E4%BA%8Epython%20beautifulsoup%E7%9A%84%E7%88%AC%E8%99%AB%E6%95%99%E7%A8%8B/index.html">
+<meta property="og:site_name" content="znxs">
+<meta property="og:description" content="针对与request请求式获取网页内容，采用beautiful soup技术进行爬虫">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.znxs.vip/study/202501271030755.png">
+<meta property="article:published_time" content="2025-01-19T02:33:50.000Z">
+<meta property="article:modified_time" content="2025-12-25T01:58:54.031Z">
+<meta property="article:author" content="znxs">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="爬虫">
+<meta property="article:tag" content="beautiful soup">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img.znxs.vip/study/202501271030755.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "基于python beautifulsoup的爬虫教程",
+  "url": "http://znxs.vip/2025/01/19/%E5%9F%BA%E4%BA%8Epython%20beautifulsoup%E7%9A%84%E7%88%AC%E8%99%AB%E6%95%99%E7%A8%8B/",
+  "image": "https://img.znxs.vip/study/202501271030755.png",
+  "datePublished": "2025-01-19T02:33:50.000Z",
+  "dateModified": "2025-12-25T01:58:54.031Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "znxs",
+      "url": "http://znxs.vip/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="http://znxs.vip/2025/01/19/%E5%9F%BA%E4%BA%8Epython%20beautifulsoup%E7%9A%84%E7%88%AC%E8%99%AB%E6%95%99%E7%A8%8B/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.4.0-b1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":500,"languages":{"author":"作者: znxs","link":"链接: ","source":"来源: znxs","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '基于python beautifulsoup的爬虫教程',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiper.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiperstyle.css"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg" style="background-image: url(/url(https:/img.znxs.vip/study/202408241129726_Stepsister.jpg));"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://img.znxs.vip/znxs/avatar_%E7%A5%9E%E9%87%8C.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">47</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">61</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://img.znxs.vip/study/202501271030755.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/favicon.ico" alt="Logo"><span class="site-name">znxs</span></a><a class="nav-page-title" href="/"><span class="site-name">基于python beautifulsoup的爬虫教程</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">基于python beautifulsoup的爬虫教程</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-01-19T02:33:50.000Z" title="发表于 2025-01-19 10:33:50">2025-01-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-12-25T01:58:54.031Z" title="更新于 2025-12-25 09:58:54">2025-12-25</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">1.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>6分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="关于python🐍爬虫"><a href="#关于python🐍爬虫" class="headerlink" title="关于python🐍爬虫"></a>关于python🐍爬虫</h2><p>首先，爬虫是一项技术类型，任何语言都能做爬虫，只要有相关实现的依赖或者包能提供相关功能，其中python 🐍 爬虫是基于一系列的依赖（包）来实现的，比较基础的有发送请求的request包（python自带）、requests包（第三方）、beautifulsoup4包（用于解析html网页）等等</p>
+<h2 id="beautifulsoup4-基础"><a href="#beautifulsoup4-基础" class="headerlink" title="beautifulsoup4 基础"></a>beautifulsoup4 基础</h2><blockquote>
+<p>安装相关包</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pip install beautifulsoup4  <span class="comment"># beautifulsoup4 基础包</span></span><br><span class="line">pip install lxml  <span class="comment"># 推荐使用 lxml 作为解析器（速度更快）</span></span><br><span class="line">pip install requests  <span class="comment"># 用于发送网页请求，获取html网页</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img.znxs.vip/study/202501271030755.png" alt="beautifulsoup"></p>
+<h3 id="基础用法"><a href="#基础用法" class="headerlink" title="基础用法"></a>基础用法</h3><p>BeautifulSoup 用于解析 <strong>HTML</strong> 或 <strong>XML</strong> 数据，并提供了一些方法来导航、搜索和修改解析树。</p>
+<p>BeautifulSoup 常见的操作包括<strong>查找标签</strong>、<strong>获取标签属性</strong>、<strong>提取文本</strong>等。</p>
+<p>要使用 BeautifulSoup，需要先导入 BeautifulSoup，并将 HTML 页面加载到 BeautifulSoup 对象中。</p>
+<p>于是，首先需要获取网页内容，这时候需要使用到requests 库，来获取第三方网页信息</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用 requests 获取网页内容</span></span><br><span class="line">url = <span class="string">&#x27;https://cn.bing.com/&#x27;</span> <span class="comment"># 抓取bing搜索引擎的网页内容</span></span><br><span class="line">response = requests.get(url)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用 BeautifulSoup 解析网页</span></span><br><span class="line">soup = BeautifulSoup(response.text, <span class="string">&#x27;lxml&#x27;</span>)  <span class="comment"># 使用 lxml 解析器</span></span><br><span class="line"><span class="comment"># 解析网页内容 html.parser 解析器</span></span><br><span class="line"><span class="comment"># soup = BeautifulSoup(response.text, &#x27;html.parser&#x27;)</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="查找标签"><a href="#查找标签" class="headerlink" title="查找标签"></a>查找标签</h3><p>BeautifulSoup 提供了多种方法来查找网页中的标签，最常用的包括 <strong>find()</strong> 和 **find_all()**。</p>
+<ul>
+<li><code>find()</code> 返回第一个匹配的标签</li>
+<li><code>find_all()</code> 返回所有匹配的标签</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用 requests 获取网页内容</span></span><br><span class="line">url = <span class="string">&#x27;https://www.znxs.vip/&#x27;</span>  <span class="comment"># 抓取bing搜索引擎的网页内容</span></span><br><span class="line">response = requests.get(url)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 中文乱码问题  设置编码格式</span></span><br><span class="line">response.encoding = <span class="string">&#x27;utf-8&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 若请求成功 进行下一步</span></span><br><span class="line"><span class="keyword">if</span> response.status_code == <span class="number">200</span>:</span><br><span class="line">    <span class="comment"># 使用 BeautifulSoup 解析网页</span></span><br><span class="line">    soup = BeautifulSoup(response.text, <span class="string">&#x27;lxml&#x27;</span>)  <span class="comment"># 使用 lxml 解析器</span></span><br><span class="line">    <span class="comment"># 查找&lt;title&gt;标签</span></span><br><span class="line">    title_tag = soup.find(<span class="string">&#x27;title&#x27;</span>)</span><br><span class="line">    <span class="comment"># 打印标题文本</span></span><br><span class="line">    <span class="keyword">if</span> title_tag:</span><br><span class="line">        <span class="built_in">print</span>(title_tag.get_text())</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;未找到&lt;title&gt;标签&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 查找第一个&lt;a&gt;标签</span></span><br><span class="line">    first_link = soup.find(<span class="string">&#x27;a&#x27;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;第一个a标签&quot;</span>,first_link)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 获取第一个 &lt;a&gt; 标签的 href 属性</span></span><br><span class="line">    first_link_href = first_link.get(<span class="string">&#x27;href&#x27;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;第一个a标签的 url&quot;</span>,first_link_href)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 查找所有 &lt;a&gt; 标签</span></span><br><span class="line">    all_links = soup.find_all(<span class="string">&#x27;a&#x27;</span>)</span><br><span class="line">    <span class="built_in">print</span>(all_links)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="获取标签的文本"><a href="#获取标签的文本" class="headerlink" title="获取标签的文本"></a>获取标签的文本</h3><p>通过 <strong>get_text()</strong> 方法，你可以提取标签中的文本内容：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 获取标签文本</span></span><br><span class="line"><span class="comment"># 获取第一个a标签的文本内容</span></span><br><span class="line">first_link_text = soup.find(<span class="string">&#x27;a&#x27;</span>).get_text()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;第一个a标签的文本内容&quot;</span>,first_link_text)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取页面中的所有文本</span></span><br><span class="line">all_text = soup.get_text()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;所有文本内容&quot;</span>,all_text)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="查找子标签和父标签"><a href="#查找子标签和父标签" class="headerlink" title="查找子标签和父标签"></a>查找子标签和父标签</h3><p>你可以通过 <strong>parent</strong> 和 <strong>children</strong> 属性访问标签的父标签和子标签：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 获取当前标签的父标签</span></span><br><span class="line">parent_tag = first_link.parent</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取当前标签的所有子标签</span></span><br><span class="line">children = first_link.children</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="查找具有特定属性的标签"><a href="#查找具有特定属性的标签" class="headerlink" title="查找具有特定属性的标签"></a>查找具有特定属性的标签</h3><p>你可以通过传递属性来查找具有特定属性的标签。</p>
+<p>例如，查找类名为 example-class 的所有 div 标签：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查找所有 class=&quot;example-class&quot; 的 &lt;div&gt; 标签</span></span><br><span class="line">divs_with_class = soup.find_all(<span class="string">&#x27;div&#x27;</span>, class_=<span class="string">&#x27;example-class&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查找具有 id=&quot;unique-id&quot; 的 &lt;p&gt; 标签</span></span><br><span class="line">unique_paragraph = soup.find(<span class="string">&#x27;p&#x27;</span>, <span class="built_in">id</span>=<span class="string">&#x27;unique-id&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="CSS-选择器"><a href="#CSS-选择器" class="headerlink" title="CSS 选择器"></a>CSS 选择器</h3><p>BeautifulSoup 也支持通过 CSS 选择器来查找标签。</p>
+<p>select() 方法允许使用类似 jQuery 的选择器语法来查找标签：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用 CSS 选择器查找所有 class 为 &#x27;example&#x27; 的 &lt;div&gt; 标签</span></span><br><span class="line">example_divs = soup.select(<span class="string">&#x27;div.example&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查找所有 &lt;a&gt; 标签中的 href 属性</span></span><br><span class="line">links = soup.select(<span class="string">&#x27;a[href]&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="BeautifulSoup-属性与方法"><a href="#BeautifulSoup-属性与方法" class="headerlink" title="BeautifulSoup 属性与方法"></a>BeautifulSoup 属性与方法</h3><p>以下是 BeautifulSoup 中常用的属性和方法:</p>
+<table>
+<thead>
+<tr>
+<th align="left"><strong>方法&#x2F;属性</strong></th>
+<th align="left"><strong>描述</strong></th>
+<th align="left"><strong>示例</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>BeautifulSoup()</code></td>
+<td align="left">用于解析 HTML 或 XML 文档并返回一个 BeautifulSoup 对象。</td>
+<td align="left"><code>soup = BeautifulSoup(html_doc, &#39;html.parser&#39;)</code></td>
+</tr>
+<tr>
+<td align="left"><code>.prettify()</code></td>
+<td align="left">格式化并美化文档内容，生成结构化的字符串。</td>
+<td align="left"><code>print(soup.prettify())</code></td>
+</tr>
+<tr>
+<td align="left"><code>.find()</code></td>
+<td align="left">查找第一个匹配的标签。</td>
+<td align="left"><code>tag = soup.find(&#39;a&#39;)</code></td>
+</tr>
+<tr>
+<td align="left"><code>.find_all()</code></td>
+<td align="left">查找所有匹配的标签，返回一个列表。</td>
+<td align="left"><code>tags = soup.find_all(&#39;a&#39;)</code></td>
+</tr>
+<tr>
+<td align="left"><code>.find_all_next()</code></td>
+<td align="left">查找当前标签后所有符合条件的标签。</td>
+<td align="left"><code>tags = soup.find(&#39;div&#39;).find_all_next(&#39;p&#39;)</code></td>
+</tr>
+<tr>
+<td align="left"><code>.find_all_previous()</code></td>
+<td align="left">查找当前标签前所有符合条件的标签。</td>
+<td align="left"><code>tags = soup.find(&#39;div&#39;).find_all_previous(&#39;p&#39;)</code></td>
+</tr>
+<tr>
+<td align="left"><code>.find_parent()</code></td>
+<td align="left">返回当前标签的父标签。</td>
+<td align="left"><code>parent = tag.find_parent()</code></td>
+</tr>
+<tr>
+<td align="left"><code>.find_all_parents()</code></td>
+<td align="left">查找当前标签的所有父标签。</td>
+<td align="left"><code>parents = tag.find_all_parents()</code></td>
+</tr>
+<tr>
+<td align="left"><code>.find_next_sibling()</code></td>
+<td align="left">查找当前标签的下一个兄弟标签。</td>
+<td align="left"><code>next_sibling = tag.find_next_sibling()</code></td>
+</tr>
+<tr>
+<td align="left"><code>.find_previous_sibling()</code></td>
+<td align="left">查找当前标签的前一个兄弟标签。</td>
+<td align="left"><code>prev_sibling = tag.find_previous_sibling()</code></td>
+</tr>
+<tr>
+<td align="left"><code>.parent</code></td>
+<td align="left">获取当前标签的父标签。</td>
+<td align="left"><code>parent = tag.parent</code></td>
+</tr>
+<tr>
+<td align="left"><code>.next_sibling</code></td>
+<td align="left">获取当前标签的下一个兄弟标签。</td>
+<td align="left"><code>next_sibling = tag.next_sibling</code></td>
+</tr>
+<tr>
+<td align="left"><code>.previous_sibling</code></td>
+<td align="left">获取当前标签的前一个兄弟标签。</td>
+<td align="left"><code>prev_sibling = tag.previous_sibling</code></td>
+</tr>
+<tr>
+<td align="left"><code>.get_text()</code></td>
+<td align="left">提取标签内的文本内容，忽略所有HTML标签。</td>
+<td align="left"><code>text = tag.get_text()</code></td>
+</tr>
+<tr>
+<td align="left"><code>.attrs</code></td>
+<td align="left">返回标签的所有属性，以字典形式表示。</td>
+<td align="left"><code>href = tag.attrs[&#39;href&#39;]</code></td>
+</tr>
+<tr>
+<td align="left"><code>.string</code></td>
+<td align="left">获取标签内的字符串内容。</td>
+<td align="left"><code>string_content = tag.string</code></td>
+</tr>
+<tr>
+<td align="left"><code>.name</code></td>
+<td align="left">返回标签的名称。</td>
+<td align="left"><code>tag_name = tag.name</code></td>
+</tr>
+<tr>
+<td align="left"><code>.contents</code></td>
+<td align="left">返回标签的所有子元素，以列表形式返回。</td>
+<td align="left"><code>children = tag.contents</code></td>
+</tr>
+<tr>
+<td align="left"><code>.descendants</code></td>
+<td align="left">返回标签的所有后代元素，生成器形式。</td>
+<td align="left"><code>for child in tag.descendants: print(child)</code></td>
+</tr>
+<tr>
+<td align="left"><code>.parent</code></td>
+<td align="left">获取当前标签的父标签。</td>
+<td align="left"><code>parent = tag.parent</code></td>
+</tr>
+<tr>
+<td align="left"><code>.previous_element</code></td>
+<td align="left">获取当前标签的前一个元素（不包括文本）。</td>
+<td align="left"><code>prev_elem = tag.previous_element</code></td>
+</tr>
+<tr>
+<td align="left"><code>.next_element</code></td>
+<td align="left">获取当前标签的下一个元素（不包括文本）。</td>
+<td align="left"><code>next_elem = tag.next_element</code></td>
+</tr>
+<tr>
+<td align="left"><code>.decompose()</code></td>
+<td align="left">从树中删除当前标签及其内容。</td>
+<td align="left"><code>tag.decompose()</code></td>
+</tr>
+<tr>
+<td align="left"><code>.unwrap()</code></td>
+<td align="left">移除标签本身，只保留其子内容。</td>
+<td align="left"><code>tag.unwrap()</code></td>
+</tr>
+<tr>
+<td align="left"><code>.insert()</code></td>
+<td align="left">向标签内插入新标签或文本。</td>
+<td align="left"><code>tag.insert(0, new_tag)</code></td>
+</tr>
+<tr>
+<td align="left"><code>.insert_before()</code></td>
+<td align="left">在当前标签前插入新标签。</td>
+<td align="left"><code>tag.insert_before(new_tag)</code></td>
+</tr>
+<tr>
+<td align="left"><code>.insert_after()</code></td>
+<td align="left">在当前标签后插入新标签。</td>
+<td align="left"><code>tag.insert_after(new_tag)</code></td>
+</tr>
+<tr>
+<td align="left"><code>.extract()</code></td>
+<td align="left">删除标签并返回该标签。</td>
+<td align="left"><code>extracted_tag = tag.extract()</code></td>
+</tr>
+<tr>
+<td align="left"><code>.replace_with()</code></td>
+<td align="left">替换当前标签及其内容。</td>
+<td align="left"><code>tag.replace_with(new_tag)</code></td>
+</tr>
+<tr>
+<td align="left"><code>.has_attr()</code></td>
+<td align="left">检查标签是否有指定的属性。</td>
+<td align="left"><code>if tag.has_attr(&#39;href&#39;):</code></td>
+</tr>
+<tr>
+<td align="left"><code>.get()</code></td>
+<td align="left">获取指定属性的值。</td>
+<td align="left"><code>href = tag.get(&#39;href&#39;)</code></td>
+</tr>
+<tr>
+<td align="left"><code>.clear()</code></td>
+<td align="left">清空标签的所有内容。</td>
+<td align="left"><code>tag.clear()</code></td>
+</tr>
+<tr>
+<td align="left"><code>.encode()</code></td>
+<td align="left">编码标签内容为字节流。</td>
+<td align="left"><code>encoded = tag.encode()</code></td>
+</tr>
+<tr>
+<td align="left"><code>.is_empty_element</code></td>
+<td align="left">检查标签是否是空元素（例如 <code>&lt;br&gt;</code>、<code>&lt;img&gt;</code> 等）。</td>
+<td align="left"><code>if tag.is_empty_element:</code></td>
+</tr>
+<tr>
+<td align="left"><code>.is_ancestor_of()</code></td>
+<td align="left">检查当前标签是否是指定标签的祖先元素。</td>
+<td align="left"><code>if tag.is_ancestor_of(another_tag):</code></td>
+</tr>
+<tr>
+<td align="left"><code>.is_descendant_of()</code></td>
+<td align="left">检查当前标签是否是指定标签的后代元素。</td>
+<td align="left"><code>if tag.is_descendant_of(another_tag):</code></td>
+</tr>
+</tbody></table>
+<h3 id="其他属性"><a href="#其他属性" class="headerlink" title="其他属性"></a>其他属性</h3><table>
+<thead>
+<tr>
+<th align="left"><strong>方法&#x2F;属性</strong></th>
+<th align="left"><strong>描述</strong></th>
+<th align="left"><strong>示例</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>.style</code></td>
+<td align="left">获取标签的内联样式。</td>
+<td align="left"><code>style = tag[&#39;style&#39;]</code></td>
+</tr>
+<tr>
+<td align="left"><code>.id</code></td>
+<td align="left">获取标签的 <code>id</code> 属性。</td>
+<td align="left"><code>id = tag[&#39;id&#39;]</code></td>
+</tr>
+<tr>
+<td align="left"><code>.class_</code></td>
+<td align="left">获取标签的 <code>class</code> 属性。</td>
+<td align="left"><code>class_name = tag[&#39;class&#39;]</code></td>
+</tr>
+<tr>
+<td align="left"><code>.string</code></td>
+<td align="left">获取标签内部的字符串内容，忽略其他标签。</td>
+<td align="left"><code>content = tag.string</code></td>
+</tr>
+<tr>
+<td align="left"><code>.parent</code></td>
+<td align="left">获取标签的父元素。</td>
+<td align="left"><code>parent = tag.parent</code></td>
+</tr>
+</tbody></table>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><table>
+<thead>
+<tr>
+<th align="left"><strong>方法&#x2F;属性</strong></th>
+<th align="left"><strong>描述</strong></th>
+<th align="left"><strong>示例</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>find_all(string)</code></td>
+<td align="left">使用字符串查找匹配的标签。</td>
+<td align="left"><code>tag = soup.find_all(&#39;div&#39;, class_=&#39;container&#39;)</code></td>
+</tr>
+<tr>
+<td align="left"><code>find_all(id)</code></td>
+<td align="left">查找指定 <code>id</code> 的标签。</td>
+<td align="left"><code>tag = soup.find_all(id=&#39;main&#39;)</code></td>
+</tr>
+<tr>
+<td align="left"><code>find_all(attrs)</code></td>
+<td align="left">查找具有指定属性的标签。</td>
+<td align="left"><code>tag = soup.find_all(attrs=&#123;&quot;href&quot;: &quot;http://example.com&quot;&#125;)</code></td>
+</tr>
+</tbody></table>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://znxs.vip">znxs</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://znxs.vip/2025/01/19/%E5%9F%BA%E4%BA%8Epython%20beautifulsoup%E7%9A%84%E7%88%AC%E8%99%AB%E6%95%99%E7%A8%8B/">http://znxs.vip/2025/01/19/%E5%9F%BA%E4%BA%8Epython%20beautifulsoup%E7%9A%84%E7%88%AC%E8%99%AB%E6%95%99%E7%A8%8B/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://znxs.vip" target="_blank">znxs</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/python/">python</a><a class="post-meta__tags" href="/tags/%E7%88%AC%E8%99%AB/">爬虫</a><a class="post-meta__tags" href="/tags/beautiful-soup/">beautiful soup</a></div><div class="post-share"><div class="social-share" data-image="https://img.znxs.vip/study/202501271030755.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.4/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.4/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2024/12/30/MFC-%E5%9B%BE%E5%83%8F%E4%B8%8A%E4%BC%A0%E6%98%BE%E7%A4%BA%E5%A4%84%E7%90%86/" title="MFC 图像上传显示处理"><img class="cover" src="https://img.znxs.vip/study/202111090821216933.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">MFC 图像上传显示处理</div></div><div class="info-2"><div class="info-item-1">MFC 图像上传显示处理，用于MFC VC++ 图片系列功能实现</div></div></div></a><a class="pagination-related" href="/2025/01/19/ArrayList-Review/" title="ArrayList Review"><img class="cover" src="https://img.znxs.vip/study/java-arraylist-1.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">ArrayList Review</div></div><div class="info-2"><div class="info-item-1">对ArrayList集合的使用的回顾，一些基础操作</div></div></div></a></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://img.znxs.vip/znxs/avatar_%E7%A5%9E%E9%87%8C.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">znxs</div><div class="author-info-description">落子无悔</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">47</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">61</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/znxs"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8Epython%F0%9F%90%8D%E7%88%AC%E8%99%AB"><span class="toc-number">1.</span> <span class="toc-text">关于python🐍爬虫</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#beautifulsoup4-%E5%9F%BA%E7%A1%80"><span class="toc-number">2.</span> <span class="toc-text">beautifulsoup4 基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%94%A8%E6%B3%95"><span class="toc-number">2.1.</span> <span class="toc-text">基础用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E6%A0%87%E7%AD%BE"><span class="toc-number">2.2.</span> <span class="toc-text">查找标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E6%A0%87%E7%AD%BE%E7%9A%84%E6%96%87%E6%9C%AC"><span class="toc-number">2.3.</span> <span class="toc-text">获取标签的文本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E5%AD%90%E6%A0%87%E7%AD%BE%E5%92%8C%E7%88%B6%E6%A0%87%E7%AD%BE"><span class="toc-number">2.4.</span> <span class="toc-text">查找子标签和父标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E5%85%B7%E6%9C%89%E7%89%B9%E5%AE%9A%E5%B1%9E%E6%80%A7%E7%9A%84%E6%A0%87%E7%AD%BE"><span class="toc-number">2.5.</span> <span class="toc-text">查找具有特定属性的标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CSS-%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-number">2.6.</span> <span class="toc-text">CSS 选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BeautifulSoup-%E5%B1%9E%E6%80%A7%E4%B8%8E%E6%96%B9%E6%B3%95"><span class="toc-number">2.7.</span> <span class="toc-text">BeautifulSoup 属性与方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E5%B1%9E%E6%80%A7"><span class="toc-number">2.8.</span> <span class="toc-text">其他属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96"><span class="toc-number">2.9.</span> <span class="toc-text">其他</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/12/24/%E7%BB%93%E5%B7%B4%E5%81%9C%E8%AF%8D%E5%BA%93/" title="结巴停词库">结巴停词库</a><time datetime="2025-12-24T06:20:07.000Z" title="发表于 2025-12-24 14:20:07">2025-12-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/05/07/RAG-%E7%9F%A5%E8%AF%86%E5%BA%93%E6%97%A0%E6%B3%95%E5%91%BD%E4%B8%AD/" title="RAG 知识库无法命中"><img src="https://img-blog.csdnimg.cn/img_convert/ea3f6f8399f3fdd12e3321434e792b66.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="RAG 知识库无法命中"/></a><div class="content"><a class="title" href="/2025/05/07/RAG-%E7%9F%A5%E8%AF%86%E5%BA%93%E6%97%A0%E6%B3%95%E5%91%BD%E4%B8%AD/" title="RAG 知识库无法命中">RAG 知识库无法命中</a><time datetime="2025-05-07T11:17:32.000Z" title="发表于 2025-05-07 19:17:32">2025-05-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/04/30/SpringBoot%20%E6%95%B4%E5%90%88AI/" title="SpringBoot整合AI"><img src="https://img.znxs.vip/study/202504301108692.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SpringBoot整合AI"/></a><div class="content"><a class="title" href="/2025/04/30/SpringBoot%20%E6%95%B4%E5%90%88AI/" title="SpringBoot整合AI">SpringBoot整合AI</a><time datetime="2025-04-30T03:09:06.000Z" title="发表于 2025-04-30 11:09:06">2025-04-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/04/24/n8n%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8%E6%A1%88%E4%BE%8B/" title="简单使用n8n小案例"><img src="https://img.znxs.vip/study/202504301129812.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="简单使用n8n小案例"/></a><div class="content"><a class="title" href="/2025/04/24/n8n%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8%E6%A1%88%E4%BE%8B/" title="简单使用n8n小案例">简单使用n8n小案例</a><time datetime="2025-04-24T10:00:00.000Z" title="发表于 2025-04-24 18:00:00">2025-04-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/04/24/it%E8%B5%84%E6%BA%90/" title="技术学习资源"><img src="https://img.znxs.vip/study/202504241757453.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="技术学习资源"/></a><div class="content"><a class="title" href="/2025/04/24/it%E8%B5%84%E6%BA%90/" title="技术学习资源">技术学习资源</a><time datetime="2025-04-24T09:54:00.000Z" title="发表于 2025-04-24 17:54:00">2025-04-24</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;2023 - 2026 By znxs</span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.4.0-b1"></script><script src="/js/main.js?v=5.4.0-b1"></script><div class="js-pjax"><script>(() => {
+  let initFn = window.walineFn || null
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+
+  const destroyWaline = ele => ele.destroy()
+
+  const initWaline = (Fn, el = document, path = window.location.pathname) => {
+    const waline = Fn({
+      el: el.querySelector('#waline-wrap'),
+      serverURL: 'https://commons.znxs.vip',
+      pageview: false,
+      dark: 'html[data-theme="dark"]',
+      comment: false,
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || path
+    })
+
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyWaline = () => {
+        destroyWaline(waline)
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+  }
+
+  const loadWaline = (el, path) => {
+    if (initFn) initWaline(initFn, el, path)
+    else {
+      btf.getCSS('https://cdn.jsdelivr.net/npm/@waline/client@3.5.5/dist/waline.min.css')
+        .then(() => import('https://cdn.jsdelivr.net/npm/@waline/client@3.5.5/dist/waline.min.js'))
+        .then(({ init }) => {
+          initFn = init || Waline.init
+          initWaline(initFn, el, path)
+          window.walineFn = initFn
+        })
+    }
+  }
+
+  if (isShuoshuo) {
+    'Waline' === 'Waline'
+      ? window.shuoshuoComment = { loadComment: loadWaline } 
+      : window.loadOtherComment = loadWaline
+    return
+  }
+
+  if ('Waline' === 'Waline' || !false) {
+    if (false) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+    else setTimeout(loadWaline, 0)
+  } else {
+    window.loadOtherComment = loadWaline
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --> <script data-pjax>if(document.getElementById('recent-posts') && location.pathname =='/'){
+    
+    var parent = document.getElementById('recent-posts');
+    var child = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img src="https://img.znxs.vip/study/202502272025707.png" alt="https://img.znxs.vip/study/202502272025707.png"/></div><div class="blog-slider__content"><span class="blog-slider__code">2023-09-05</span><a class="blog-slider__title" href="2023/09/05/项目部署实践/">项目部署实践</a><div class="blog-slider__text">项目部署-实践</div><a class="blog-slider__button" href="2023/09/05/项目部署实践/">详情</a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img src="https://img.znxs.vip/study/202504301131330.jpeg" alt="https://img.znxs.vip/study/202504301131330.jpeg"/></div><div class="blog-slider__content"><span class="blog-slider__code">2024-05-19</span><a class="blog-slider__title" href="2024/05/19/NewIdea/">NewIdeas</a><div class="blog-slider__text">NewIdeas</div><a class="blog-slider__button" href="2024/05/19/NewIdea/">详情</a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img src="https://tse1-mm.cn.bing.net/th/id/OIP-C.R1Bi3fNDyYjLsXdg9OqoIAHaEo?w=315&h=196&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="https://tse1-mm.cn.bing.net/th/id/OIP-C.R1Bi3fNDyYjLsXdg9OqoIAHaEo?w=315&h=196&c=7&r=0&o=5&dpr=1.3&pid=1.7"/></div><div class="blog-slider__content"><span class="blog-slider__code">2023-09-03</span><a class="blog-slider__title" href="2023/09/03/两个设备同步一个git项目/">两个设备同步一个git项目</a><div class="blog-slider__text">两个设备同步一个git项目</div><a class="blog-slider__button" href="2023/09/03/两个设备同步一个git项目/">详情</a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载swiper')
+    parent.insertAdjacentHTML("afterbegin",child)}
+     </script>
+<script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiper.min.js"></script>
+<script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper@0.18/swiper/swiperindex.js"></script>
+<style></style><!-- hexo injector body_end end --></body></html>

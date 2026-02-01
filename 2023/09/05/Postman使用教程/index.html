@@ -1,0 +1,648 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Postman使用教程 | znxs</title><meta name="author" content="znxs"><meta name="copyright" content="znxs"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="关于自己讲述的postman的教程，主要是保姆级别的，通俗易懂">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Postman使用教程">
+<meta property="og:url" content="http://znxs.vip/2023/09/05/Postman%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/index.html">
+<meta property="og:site_name" content="znxs">
+<meta property="og:description" content="关于自己讲述的postman的教程，主要是保姆级别的，通俗易懂">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.znxs.vip/study/202504301136545.jpeg">
+<meta property="article:published_time" content="2023-09-05T14:22:02.000Z">
+<meta property="article:modified_time" content="2025-12-25T01:58:50.864Z">
+<meta property="article:author" content="znxs">
+<meta property="article:tag" content="使用教程">
+<meta property="article:tag" content="postman">
+<meta property="article:tag" content="软件测试">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img.znxs.vip/study/202504301136545.jpeg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Postman使用教程",
+  "url": "http://znxs.vip/2023/09/05/Postman%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/",
+  "image": "https://img.znxs.vip/study/202504301136545.jpeg",
+  "datePublished": "2023-09-05T14:22:02.000Z",
+  "dateModified": "2025-12-25T01:58:50.864Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "znxs",
+      "url": "http://znxs.vip/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="http://znxs.vip/2023/09/05/Postman%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.4.0-b1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":500,"languages":{"author":"作者: znxs","link":"链接: ","source":"来源: znxs","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Postman使用教程',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiper.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiperstyle.css"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg" style="background-image: url(/url(https:/img.znxs.vip/study/202408241129726_Stepsister.jpg));"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://img.znxs.vip/znxs/avatar_%E7%A5%9E%E9%87%8C.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">47</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">61</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://img.znxs.vip/study/202504301136352.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/favicon.ico" alt="Logo"><span class="site-name">znxs</span></a><a class="nav-page-title" href="/"><span class="site-name">Postman使用教程</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Postman使用教程</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-09-05T14:22:02.000Z" title="发表于 2023-09-05 22:22:02">2023-09-05</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-12-25T01:58:50.864Z" title="更新于 2025-12-25 09:58:50">2025-12-25</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">3.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>11分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/401385193">全网最全的 postman 工具使用教程 - 知乎 (zhihu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/hong521520/article/details/106614593">Postman 的使用教程（详细）_postman使用教程_一个橙子呀的博客-CSDN博客</a></p>
+<h1 id="接口测试工具-postman-实战"><a href="#接口测试工具-postman-实战" class="headerlink" title="接口测试工具-postman 实战"></a>接口测试工具-postman 实战</h1><h3 id="什么是接口（Api）"><a href="#什么是接口（Api）" class="headerlink" title="什么是接口（Api）"></a>什么是接口（Api）</h3><p>下面就是一个标准的接口</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://localhost:8080/api/user/list?name=John</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img.znxs.vip/study/znxsznxsimage-20230911103852935.png" alt="http请求"></p>
+<p>接口也叫数据接口，就是指系统或组件之间的交互点，通过这些交互点可以实现数据的交互。(数据交互的通道)</p>
+<p>例如：开发一个班级管理系统，有新增学生接口，删除学生接口，修改学生接口，查询学生接口等等。</p>
+<p>班级管理学生的功能（增删改查）+传入参数 这部分就是<code>接口</code>的组成</p>
+<p><strong>接口测试</strong>:是对系统或组件之间的接口进行测试，主要是校验数据的交换、传递和控制管理过程，以及相互逻辑依赖关系。</p>
+<p>就是在前后端交互之前，为了方便开发的顺利进行，先进行一次接口测试，模拟客户端向服务器发送数据，进行相应的业务，并向客户端返回数据，检查响应数据是否符合预期</p>
+<h3 id="http请求"><a href="#http请求" class="headerlink" title="http请求"></a>http请求</h3><p>以下是一个HTTP GET请求的示例：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">GET /api/user/list HTTP/<span class="number">1.1</span></span><br><span class="line">Host<span class="punctuation">:</span> example.com</span><br><span class="line">User-Agent<span class="punctuation">:</span> Mozilla/<span class="number">5.0</span> (Windows NT <span class="number">10.0</span>; Win64; x64) AppleWebKit/<span class="number">537.36</span> (KHTML<span class="punctuation">,</span> like Gecko) Chrome/<span class="number">91.0</span><span class="number">.4472</span><span class="number">.124</span> Safari/<span class="number">537.36</span></span><br><span class="line">Accept<span class="punctuation">:</span> application/json<span class="punctuation">,</span> text/plain<span class="punctuation">,</span> /</span><br></pre></td></tr></table></figure>
+
+<p>以下是一个HTTP POST请求的示例：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">POST /api/user/list HTTP/<span class="number">1.1</span></span><br><span class="line">Host<span class="punctuation">:</span> example.com</span><br><span class="line">User-Agent<span class="punctuation">:</span> Mozilla/<span class="number">5.0</span> (Windows NT <span class="number">10.0</span>; Win64; x64) AppleWebKit/<span class="number">537.36</span> (KHTML<span class="punctuation">,</span> like Gecko) Chrome/<span class="number">91.0</span><span class="number">.4472</span><span class="number">.124</span> Safari/<span class="number">537.36</span></span><br><span class="line">Accept<span class="punctuation">:</span> application/json</span><br><span class="line">Content-Type<span class="punctuation">:</span> application/json</span><br><span class="line">Content-Length<span class="punctuation">:</span> <span class="number">29</span></span><br><span class="line"><span class="punctuation">&#123;</span><span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;John&quot;</span><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>http请求由三部分组成，分别是:请求行、请求头、请求体</p>
+<blockquote>
+<p>请求行：请求方法、请求url、http版本协议</p>
+</blockquote>
+<p>常见的请求方法有五种：GET、POST、PUT、DELETE、PATCH</p>
+<blockquote>
+<p>请求头：请求的一些详细信息</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>请求头</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Host</td>
+<td>接受请求的服务器地址，可以是ip端口号，也可以是域名</td>
+</tr>
+<tr>
+<td>User-Agent</td>
+<td>发送请求的应用</td>
+</tr>
+<tr>
+<td>Connection</td>
+<td>指定与连接相关的属性，如Connection Keep-Ative</td>
+</tr>
+<tr>
+<td>Accept-Charset</td>
+<td>通知服务端可以发送的编码格式</td>
+</tr>
+<tr>
+<td>Accept-Encoding</td>
+<td>通知服务端可以发送的数据压缩</td>
+</tr>
+<tr>
+<td>Accept-Language</td>
+<td>通知服务端可以发送的语言</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>请求体：请求的携带数据</p>
+</blockquote>
+<h3 id="发送请求的流程"><a href="#发送请求的流程" class="headerlink" title="发送请求的流程"></a>发送请求的流程</h3><p>简单演示：</p>
+<p><img src="https://img.znxs.vip/study/znxsznxs630eca05d7a64e3bbaefebcaf20b3a6e.png" alt="get请求过程"></p>
+<ul>
+<li>用户可能点击了网页的一个按钮(url)</li>
+<li>然后网页发起了http数据请求</li>
+<li>服务器解析数据请求，找到对应的功能处理请求（对数据库数据进行增删改查等一系列操作）</li>
+<li>服务器获取到数据进行响应请求返回数据给网页</li>
+<li>网页处理数据返回给用户展示</li>
+</ul>
+<h3 id="使用测试工具postman"><a href="#使用测试工具postman" class="headerlink" title="使用测试工具postman"></a>使用测试工具postman</h3><p>这里就使用常用的接口测试软件postman进行演示</p>
+<h5 id="postman安装"><a href="#postman安装" class="headerlink" title="postman安装"></a>postman安装</h5><p>在官网上下载安装包之后，直接进行安装</p>
+<p>Postman下载：<a target="_blank" rel="noopener" href="https://www.postman.com/downloads/">https://www.postman.com/downloads/</a></p>
+<p>安装完成之后需要进行登录，点击create account</p>
+<p><img src="https://img.znxs.vip/study/znxsimage-20230907080849726.png" alt="登录注册"></p>
+<p>然后就会跳转到注册页面，这里网络原因可能有时候跳不过去，可以直接访问<a target="_blank" rel="noopener" href="https://identity.getpostman.com/signup">https://identity.getpostman.com/signup</a> 这个连接就是注册页面</p>
+<p>然后关闭postman输入登录即可</p>
+<p>进入postman页面，就是postman的首页，可以点击Workspaces进入工作区，一般都是在这里进行测试接口</p>
+<p><img src="https://img.znxs.vip/study/znxsimage-20230907092458557.png" alt="工作区"></p>
+<h3 id="第一个请求接口"><a href="#第一个请求接口" class="headerlink" title="第一个请求接口"></a>第一个请求接口</h3><blockquote>
+<p>可以直接点击+创建接口，但是不建议，因为接口测试工作一般都是整个项目或者整个模块的接口，如果没有一个好的管理，测试工作会非常杂乱无章，影响测试效率。所以要创建集合目录来管理接口</p>
+</blockquote>
+<p>创建集合文件夹，用于保存项目接口，可以编写项目描述</p>
+<p><img src="https://img.znxs.vip/study/znxsimage-20230907093241412.png" alt="项目文件夹"></p>
+<p>创建模块文件夹，用于保存项目具体模块接口，可以编写模块描述</p>
+<p><img src="https://img.znxs.vip/study/znxsimage-20230907093411131.png" alt="模块文件夹"></p>
+<p>创建第一个接口</p>
+<p><img src="https://img.znxs.vip/study/znxsimage-20230907093447603.png" alt="接口"></p>
+<p>这里可以使用我创建的共享接口</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://47.92.126.51:8080/api/list</span><br></pre></td></tr></table></figure>
+
+<p>点击send发送请求得到数据</p>
+<p><img src="https://img.znxs.vip/study/znxsimage-20230907095543646.png" alt="常用功能"></p>
+<p>其中auth用于权限认证，</p>
+<h3 id="常见的请求接口"><a href="#常见的请求接口" class="headerlink" title="常见的请求接口"></a>常见的请求接口</h3><blockquote>
+<p>有四种类型：查询参数的接口，表单类型的接口，json类型的接口以及含有上传文件的接口</p>
+</blockquote>
+<h5 id="查询参数请求接口"><a href="#查询参数请求接口" class="headerlink" title="查询参数请求接口"></a>查询参数请求接口</h5><p>就是在url后面加上查询参数</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://localhost:8080/api/user?name=John</span><br></pre></td></tr></table></figure>
+
+<p><strong>postman操作</strong></p>
+<ol>
+<li><p>新建请求。在请求方法中选择请求方法：GET（默认为GET）</p>
+</li>
+<li><p>添加请求参数</p>
+<ol>
+<li><p>方式一，直接在url后面添加?拼接键值对，例如：?name&#x3D;John</p>
+</li>
+<li><p>方式二，点击Params选项卡，在表格中输入键值对自动补充至url拼接</p>
+<p><img src="https://img.znxs.vip/study/znxsimage-20230907101224304.png" alt="查询参数请求接口"></p>
+</li>
+</ol>
+</li>
+<li><p>接口URL中输入地址，点击Send按钮就可以发送请求了 。</p>
+</li>
+</ol>
+<h5 id="表单类型请求接口"><a href="#表单类型请求接口" class="headerlink" title="表单类型请求接口"></a>表单类型请求接口</h5><p>需要向服务器说明连接的数据类型为表单类型 也就是需要修改请求头<code>Content-Type</code>参数为<code>application/x-www-form-urlencoded</code></p>
+<p><strong>postman操作</strong></p>
+<ol>
+<li><p>新建请求，选择请求方法为POST，输入url</p>
+</li>
+<li><p>点击Headers 添加一行请求头信息(postman会自动添加，可忽略这步)</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Content-type</td>
+<td>application&#x2F;x-www-form-urlencoded</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>点击body,<strong>选中</strong><code>x-www-form-urlencoded</code> 填写表单键值对 可以参考请求参数方式填写</p>
+</li>
+<li><p>点击send发送请求</p>
+</li>
+</ol>
+<p><img src="https://img.znxs.vip/study/znxsimage-20230907113919110.png" alt="表单类型请求接口"></p>
+<h5 id="上传文件表单请求接口"><a href="#上传文件表单请求接口" class="headerlink" title="上传文件表单请求接口"></a>上传文件表单请求接口</h5><blockquote>
+<p>在实际开发中文件上传需求非常常见，这就需要使用到文件上传<code>uploadFolder</code>的请求方式了</p>
+</blockquote>
+<p><strong>postman操作</strong></p>
+<ol>
+<li><p>新建请求，选择请求方法为POST，输入url</p>
+</li>
+<li><p>点击body <strong>选中</strong><code>from-data</code> 填写键值对 因为这里是文件上传 所以需要把key中的text选项改为file，后面的value输入框中就变成了select的按钮，点击按钮就可以选择文件</p>
+</li>
+<li><p>选择完文件后点击send发送请求</p>
+<p><img src="https://img.znxs.vip/study/znxsimage-20230907120057806.png" alt="上传文件请求接口"></p>
+</li>
+</ol>
+<h5 id="json类型请求接口"><a href="#json类型请求接口" class="headerlink" title="json类型请求接口"></a>json类型请求接口</h5><p>json是开发过程中最常见的一种情况，即请求的请求体为json数据格式，json有着良好的可读性，易解析，结构化数据等优点 所以常用于数据的<strong>增加</strong>和<strong>修改</strong>操作</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// json 数据格式</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">	<span class="attr">&quot;key&quot;</span><span class="punctuation">:</span><span class="string">&quot;value&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;John&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>postman操作</strong></p>
+<ol>
+<li><p>新建请求，选择请求方式为POST，输入url</p>
+</li>
+<li><p>选择body ，选中row 并选中为JSON格式</p>
+</li>
+<li><p>输入json数据</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">	<span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;李四&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;age&quot;</span><span class="punctuation">:</span> <span class="number">18</span><span class="punctuation">,</span> <span class="comment">// 这里age在数据库中为int类型 所以直接输入数字,</span></span><br><span class="line">    <span class="attr">&quot;bj&quot;</span><span class="punctuation">:</span> <span class="string">&quot;软件21304&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>输入完成后，点击send发送请求</p>
+<p><img src="https://img.znxs.vip/study/znxsimage-20230907121456622.png" alt="json数据请求接口"></p>
+</li>
+</ol>
+<p>以上是基本的发送请求的方法</p>
+<p>根据不同的业务需求和场景，需要发送对应的请求，这个时候就需要一个文档来说明，就是接口文档</p>
+<p>常见的接口文档</p>
+<hr>
+<p><strong>1. 查询指定项目属性</strong></p>
+<h6 id="接口功能"><a href="#接口功能" class="headerlink" title="接口功能"></a>接口功能</h6><blockquote>
+<p>获取指定学生信息</p>
+</blockquote>
+<h6 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h6><blockquote>
+<p><a target="_blank" rel="noopener" href="http://localhost:8080/">http://localhost:8080</a></p>
+</blockquote>
+<h6 id="支持格式"><a href="#支持格式" class="headerlink" title="支持格式"></a>支持格式</h6><blockquote>
+<p>JSON</p>
+</blockquote>
+<h6 id="HTTP请求方式"><a href="#HTTP请求方式" class="headerlink" title="HTTP请求方式"></a>HTTP请求方式</h6><blockquote>
+<p>GET</p>
+</blockquote>
+<h6 id="请求参数"><a href="#请求参数" class="headerlink" title="请求参数"></a>请求参数</h6><blockquote>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>必选</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>name</td>
+<td>ture</td>
+<td>string</td>
+<td>请求的学生名字</td>
+</tr>
+<tr>
+<td>age</td>
+<td>true</td>
+<td>int</td>
+<td>请求的学生年龄</td>
+</tr>
+</tbody></table>
+</blockquote>
+<h6 id="返回字段"><a href="#返回字段" class="headerlink" title="返回字段"></a>返回字段</h6><blockquote>
+<table>
+<thead>
+<tr>
+<th>返回字段</th>
+<th>字段类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>code</td>
+<td>int</td>
+<td>返回结果状态。0：正常；1：错误。</td>
+</tr>
+<tr>
+<td>data</td>
+<td>obj</td>
+<td>返回的数据</td>
+</tr>
+<tr>
+<td>msg</td>
+<td>string</td>
+<td>返回描述信息</td>
+</tr>
+</tbody></table>
+</blockquote>
+<h6 id="接口示例"><a href="#接口示例" class="headerlink" title="接口示例"></a>接口示例</h6><blockquote>
+<p>地址：<a target="_blank" rel="noopener" href="http://localhost:8080/api/list?name=%E5%BC%A0%E4%B8%89">http://localhost:8080/api/list?name=张三</a></p>
+</blockquote>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;code&quot;</span><span class="punctuation">:</span> <span class="number">200</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;data&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;张三&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;age&quot;</span><span class="punctuation">:</span> <span class="number">18</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;bj&quot;</span><span class="punctuation">:</span> <span class="string">&quot;软件21304&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;message&quot;</span><span class="punctuation">:</span> <span class="string">&quot;查询学生成功&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>还有自动生成类的接口文档工具Swagger 开发中经常用到</p>
+<p>可以访问<a target="_blank" rel="noopener" href="http://47.92.126.51:8080//swagger-ui.html">swagger本项目接口文档</a></p>
+<p><code>http://47.92.126.51:8080//swagger-ui.html</code>查看</p>
+<hr>
+<h3 id="postman自动化测试"><a href="#postman自动化测试" class="headerlink" title="postman自动化测试"></a>postman自动化测试</h3><p>到这里，已经掌握了基本的postman的使用，现在来看看自动化接口测试</p>
+<h5 id="接口结果判断"><a href="#接口结果判断" class="headerlink" title="接口结果判断"></a>接口结果判断</h5><p>请求返回的结果如果自己自动判断那就很慢，而且会影响效率，需要自动化判断接口结果</p>
+<p>在tests里面编写js脚本 用于查看请求接口后的正确性，一般常用的就是断言</p>
+<ul>
+<li>判断请求返回的响应状态码是否正确</li>
+<li>查看请求返回的内容是否符合预期</li>
+<li>查看请求时间是否超时或者过慢(可省略)</li>
+</ul>
+<p>因为有全局变量，所以不用写其他的，可以直接获取请求的相关对象</p>
+<h5 id="相关对象"><a href="#相关对象" class="headerlink" title="相关对象"></a>相关对象</h5><ul>
+<li>responseCode：返回请求的状态信息（例如：code）</li>
+<li>responseBody：返回请求的数据内容（响应体）</li>
+<li>tests ：键值对，在TestResults显示 查看返回测试结果是否成功<ul>
+<li>key：字符串类型，处理结果的描述（如：code &#x3D; 200）</li>
+<li>value：布尔类型，ture 表示测试通过，false反之</li>
+</ul>
+</li>
+<li>responseTime：请求响应时间</li>
+<li>pm：postman工具的对象，功能比较全面，可以查看postman官方文档</li>
+</ul>
+<h5 id="使用Tests"><a href="#使用Tests" class="headerlink" title="使用Tests"></a>使用Tests</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">复制<span class="comment">//查看httpCode码</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(responseCode.<span class="property">code</span>)</span><br><span class="line"><span class="comment">// 判断接口状态码是否为200</span></span><br><span class="line">tests[<span class="string">&quot;接口状态码200&quot;</span>] = responseCode.<span class="property">code</span> === <span class="number">200</span>;</span><br><span class="line"><span class="comment">//判断请求时间</span></span><br><span class="line">tests[<span class="string">&quot;返回时间小于1000毫秒&quot;</span>] = responseTime &lt; <span class="number">1000</span>;</span><br><span class="line"><span class="comment">//返回body转json</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(responseBody)  <span class="comment">// 请求体数据为json字符串，需要转换成json对象</span></span><br><span class="line"><span class="keyword">var</span> data = <span class="title class_">JSON</span>.<span class="title function_">parse</span>(responseBody);</span><br><span class="line"><span class="comment">//检查json数据</span></span><br><span class="line">tests[<span class="string">&#x27;code码必须为200&#x27;</span>]= data.<span class="property">code</span>==<span class="number">200</span></span><br><span class="line">复制<span class="comment">// 其他常用命令</span></span><br><span class="line"><span class="comment">// 添加全局环境变量</span></span><br><span class="line">pm.<span class="property">environment</span>.<span class="title function_">set</span>(<span class="string">&quot;variable_key&quot;</span>, <span class="string">&quot;variable_value&quot;</span>);</span><br><span class="line"><span class="comment">// 设置</span></span><br></pre></td></tr></table></figure>
+
+<p>这些功能只能满足一些单一的测试</p>
+<h3 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h3><p>全局变量（Global）：全局变量在任意位置都可以使用。</p>
+<p>集合变量（Collection）：在集合中的整个请求中都可用，并且与环境无关，因此不根据所选环境进行更改。</p>
+<p>环境变量（Environment）：允许针对不同环境定制处理，例如本地开发与测试或生产。但一次只能激活一个环境。</p>
+<p>数据变量（Data）：来自外部的CSV 和 JSON 文件，用于定义在通过 Newman 或 Collection Runner 运行集合时可以使用的数据集。</p>
+<p>局部变量（Local）：该变量是临时的，只能在请求脚本中访问。局部变量值仅限于单个请求或集合运行，并且在运行完成后不再可用。</p>
+<h3 id="批量自动化测试"><a href="#批量自动化测试" class="headerlink" title="批量自动化测试"></a>批量自动化测试</h3><p>一般做一个完整的项目，不会一个一个的去测试，非常耗费时间和人力，通过项目模块化，采取集成测试的方式,进行单元、单模块的集中测试</p>
+<ol>
+<li><p>进入项目集合首页，点击Run进行集合测试</p>
+</li>
+<li><p>会出来一个配置页面</p>
+<ul>
+<li>Iteration：用于设置接口一共要运行的次数</li>
+<li>Delay：设置每次运行的接口之间的时间间隔（毫秒）</li>
+<li>Data：上传测试数据文件</li>
+<li>Save responses：保存响应</li>
+<li>Keep variable values：保留变量值</li>
+<li>Run conllection without using stored cooikes：运行集合并不存储cookie</li>
+<li>Save cookies after collection run：收集运行后的cookies</li>
+</ul>
+</li>
+<li><p>先运行一次看看,所有配置都默认选项</p>
+<p>可以看到项目的所有断言以及运行情况</p>
+<p><img src="https://img.znxs.vip/study/znxsimage-20230911152606813.png" alt="项目运行情况"></p>
+<p>可以看到通过的有三个，失败的有一个，并且也明确的标注了失败的断言</p>
+</li>
+<li><p>数据文件</p>
+<p>这样确实很快，但还是不方便，如果想要修改错误，修改测试数据，修改其他的参数等等，还要去接口去一个一个添加，非常麻烦，这里就可以用到<code>全局变量</code></p>
+<p>可以在<code>Pre-request</code>或者项目集合文件中设置全局变量</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 设置全局变量</span></span><br><span class="line">postman.<span class="title function_">setGlobalVariable</span>(<span class="string">&quot;name&quot;</span>,<span class="string">&quot;张三&quot;</span>)</span><br><span class="line">postman.<span class="title function_">setGlobalVariable</span>(<span class="string">&quot;age&quot;</span>,<span class="string">&quot;18&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>就可以在请求参数中设置<code>key</code>，然后在<code>value</code>写上data数据的key</p>
+<table>
+<thead>
+<tr>
+<th>key</th>
+<th>value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>name</td>
+<td><code>&#123;&#123;name&#125;&#125;</code></td>
+</tr>
+<tr>
+<td>age</td>
+<td><code>&#123;&#123;age&#125;&#125;</code></td>
+</tr>
+</tbody></table>
+<p>然后点击刚刚的批量运行键，运行，在配置项选择数据</p>
+<p>可以是csv类型文件或者json文件</p>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>age</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>张三</td>
+<td>18</td>
+</tr>
+<tr>
+<td>李四</td>
+<td>19</td>
+</tr>
+</tbody></table>
+<p>这个时候，就会根据全局变量来自动执行有几个数据就执行几次</p>
+</li>
+</ol>
+<h3 id="请求依赖问题"><a href="#请求依赖问题" class="headerlink" title="请求依赖问题"></a>请求依赖问题</h3><p>以上的接口都是比较简单的接口测试，都是并行接口，如果一个接口数据需要另一个接口数据，这个时候就需要线性的接口传递方法来解决</p>
+<p>举个栗子：有个老师需要登录，来查看学生进行管理</p>
+<p>老师登录之后保存了token(登录认证标识) ，下次登录的时候就不用重新登录了</p>
+<p>新建一个模块，因为父接口需要是第一个接口，而postman集合接口执行顺序就是从前往后，所以放在第一个 第二个放放其他接口，后面放子接口</p>
+<blockquote>
+<p>如果父接口登录正常，则会携带token，并且跳转至子接口1顺序执行父接口-&gt;子接口1-&gt;子接口2</p>
+</blockquote>
+<p><img src="https://img.znxs.vip/study/znxsimage-20230912080711574.png" alt="请求依赖"></p>
+<blockquote>
+<p>如果父接口登录错误，则不会带token，并且跳转至子接口2，跳过其他接口和子接口1，顺序执行父接口-&gt;子接口2</p>
+</blockquote>
+<p><img src="https://img.znxs.vip/study/znxsimage-20230912080510121.png" alt="请求依赖"></p>
+<p>从着可以看出，可以通过逻辑判断跳过接口的执行，不过只有在集合Run的时候才会调用，单个执行并不会跳转请求接口</p>
+<p><strong>等价类</strong></p>
+<table>
+<thead>
+<tr>
+<th>输入条件</th>
+<th>有效等价类</th>
+<th>无效等价类</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td>①用户名不为空</td>
+<td>②用户名为空</td>
+</tr>
+<tr>
+<td>用户名和密码</td>
+<td>③密码不为空</td>
+<td>④密码为空</td>
+</tr>
+<tr>
+<td></td>
+<td>⑤用户名存在</td>
+<td>⑥用户名不存在</td>
+</tr>
+<tr>
+<td></td>
+<td>⑦密码正确</td>
+<td>⑧密码不正确</td>
+</tr>
+</tbody></table>
+<p><strong>测试用例</strong></p>
+<table>
+<thead>
+<tr>
+<th>编号</th>
+<th>输入数据</th>
+<th>覆盖等价类</th>
+<th>预期</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>username:<code>罗老师</code>,password:<code>123456</code></td>
+<td>①,③,⑤,⑦</td>
+<td>登录成功</td>
+</tr>
+<tr>
+<td>2</td>
+<td>username:<code> </code>,password:<code> </code></td>
+<td>②</td>
+<td>登录失败</td>
+</tr>
+<tr>
+<td>3</td>
+<td>username:<code>罗老师</code>,password:<code> </code></td>
+<td>①,④</td>
+<td>登录失败</td>
+</tr>
+<tr>
+<td>4</td>
+<td>username:<code>陈老师</code>,password:<code>123456</code></td>
+<td>①,③,⑥</td>
+<td>登录失败</td>
+</tr>
+<tr>
+<td>5</td>
+<td>username:<code>罗老师</code>,password:<code>123</code></td>
+<td>①,③,⑤,⑧</td>
+<td>登录失败</td>
+</tr>
+</tbody></table>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://znxs.vip">znxs</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://znxs.vip/2023/09/05/Postman%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/">http://znxs.vip/2023/09/05/Postman%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://znxs.vip" target="_blank">znxs</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/">使用教程</a><a class="post-meta__tags" href="/tags/postman/">postman</a><a class="post-meta__tags" href="/tags/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/">软件测试</a></div><div class="post-share"><div class="social-share" data-image="https://img.znxs.vip/study/202504301136545.jpeg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.4/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.4/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2023/09/05/%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E5%AE%9E%E8%B7%B5/" title="项目部署实践"><img class="cover" src="https://img.znxs.vip/study/202502272025707.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">项目部署实践</div></div><div class="info-2"><div class="info-item-1">项目部署教程，对于一个项目怎么上线服务器，使用宝塔进行维护</div></div></div></a><a class="pagination-related" href="/2023/10/23/1024%E7%A8%8B%E5%BA%8F%E5%91%98%E8%8A%82/" title="1024程序员节"><img class="cover" src="https://img.zcool.cn/community/0169ya2lxarctfs5ubo4dv3132.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">1024程序员节</div></div><div class="info-2"><div class="info-item-1">1024程序节又到了，总结一下当程序猿或者准程序员的一些话</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2023/09/04/git%E4%BD%BF%E7%94%A8%E5%AE%9E%E8%B7%B5/" title="git使用实践"><img class="cover" src="https://tse1-mm.cn.bing.net/th/id/OIP-C.R1Bi3fNDyYjLsXdg9OqoIAHaEo?w=315&h=196&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="fas fa-history fa-fw"></i> 2025-12-25</div><div class="info-item-2">git使用实践</div></div><div class="info-2"><div class="info-item-1">git的使用教程，关于git怎么使用，工作流程及其原理</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://img.znxs.vip/znxs/avatar_%E7%A5%9E%E9%87%8C.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">znxs</div><div class="author-info-description">落子无悔</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">47</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">61</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/znxs"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-number">1.</span> <span class="toc-text">参考文献</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7-postman-%E5%AE%9E%E6%88%98"><span class="toc-number"></span> <span class="toc-text">接口测试工具-postman 实战</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%8E%A5%E5%8F%A3%EF%BC%88Api%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">什么是接口（Api）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#http%E8%AF%B7%E6%B1%82"><span class="toc-number">2.</span> <span class="toc-text">http请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%91%E9%80%81%E8%AF%B7%E6%B1%82%E7%9A%84%E6%B5%81%E7%A8%8B"><span class="toc-number">3.</span> <span class="toc-text">发送请求的流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7postman"><span class="toc-number">4.</span> <span class="toc-text">使用测试工具postman</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#postman%E5%AE%89%E8%A3%85"><span class="toc-number">4.0.1.</span> <span class="toc-text">postman安装</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E4%B8%AA%E8%AF%B7%E6%B1%82%E6%8E%A5%E5%8F%A3"><span class="toc-number">5.</span> <span class="toc-text">第一个请求接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E8%AF%B7%E6%B1%82%E6%8E%A5%E5%8F%A3"><span class="toc-number">6.</span> <span class="toc-text">常见的请求接口</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E5%8F%82%E6%95%B0%E8%AF%B7%E6%B1%82%E6%8E%A5%E5%8F%A3"><span class="toc-number">6.0.1.</span> <span class="toc-text">查询参数请求接口</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%A1%A8%E5%8D%95%E7%B1%BB%E5%9E%8B%E8%AF%B7%E6%B1%82%E6%8E%A5%E5%8F%A3"><span class="toc-number">6.0.2.</span> <span class="toc-text">表单类型请求接口</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E8%A1%A8%E5%8D%95%E8%AF%B7%E6%B1%82%E6%8E%A5%E5%8F%A3"><span class="toc-number">6.0.3.</span> <span class="toc-text">上传文件表单请求接口</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#json%E7%B1%BB%E5%9E%8B%E8%AF%B7%E6%B1%82%E6%8E%A5%E5%8F%A3"><span class="toc-number">6.0.4.</span> <span class="toc-text">json类型请求接口</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E5%8A%9F%E8%83%BD"><span class="toc-number">6.0.4.1.</span> <span class="toc-text">接口功能</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#URL"><span class="toc-number">6.0.4.2.</span> <span class="toc-text">URL</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%94%AF%E6%8C%81%E6%A0%BC%E5%BC%8F"><span class="toc-number">6.0.4.3.</span> <span class="toc-text">支持格式</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#HTTP%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F"><span class="toc-number">6.0.4.4.</span> <span class="toc-text">HTTP请求方式</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0"><span class="toc-number">6.0.4.5.</span> <span class="toc-text">请求参数</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E8%BF%94%E5%9B%9E%E5%AD%97%E6%AE%B5"><span class="toc-number">6.0.4.6.</span> <span class="toc-text">返回字段</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E7%A4%BA%E4%BE%8B"><span class="toc-number">6.0.4.7.</span> <span class="toc-text">接口示例</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#postman%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95"><span class="toc-number">7.</span> <span class="toc-text">postman自动化测试</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E7%BB%93%E6%9E%9C%E5%88%A4%E6%96%AD"><span class="toc-number">7.0.1.</span> <span class="toc-text">接口结果判断</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E5%AF%B9%E8%B1%A1"><span class="toc-number">7.0.2.</span> <span class="toc-text">相关对象</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8Tests"><span class="toc-number">7.0.3.</span> <span class="toc-text">使用Tests</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number">8.</span> <span class="toc-text">环境变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%B9%E9%87%8F%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95"><span class="toc-number">9.</span> <span class="toc-text">批量自动化测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%E4%BE%9D%E8%B5%96%E9%97%AE%E9%A2%98"><span class="toc-number">10.</span> <span class="toc-text">请求依赖问题</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/12/24/%E7%BB%93%E5%B7%B4%E5%81%9C%E8%AF%8D%E5%BA%93/" title="结巴停词库">结巴停词库</a><time datetime="2025-12-24T06:20:07.000Z" title="发表于 2025-12-24 14:20:07">2025-12-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/05/07/RAG-%E7%9F%A5%E8%AF%86%E5%BA%93%E6%97%A0%E6%B3%95%E5%91%BD%E4%B8%AD/" title="RAG 知识库无法命中"><img src="https://img-blog.csdnimg.cn/img_convert/ea3f6f8399f3fdd12e3321434e792b66.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="RAG 知识库无法命中"/></a><div class="content"><a class="title" href="/2025/05/07/RAG-%E7%9F%A5%E8%AF%86%E5%BA%93%E6%97%A0%E6%B3%95%E5%91%BD%E4%B8%AD/" title="RAG 知识库无法命中">RAG 知识库无法命中</a><time datetime="2025-05-07T11:17:32.000Z" title="发表于 2025-05-07 19:17:32">2025-05-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/04/30/SpringBoot%20%E6%95%B4%E5%90%88AI/" title="SpringBoot整合AI"><img src="https://img.znxs.vip/study/202504301108692.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SpringBoot整合AI"/></a><div class="content"><a class="title" href="/2025/04/30/SpringBoot%20%E6%95%B4%E5%90%88AI/" title="SpringBoot整合AI">SpringBoot整合AI</a><time datetime="2025-04-30T03:09:06.000Z" title="发表于 2025-04-30 11:09:06">2025-04-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/04/24/n8n%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8%E6%A1%88%E4%BE%8B/" title="简单使用n8n小案例"><img src="https://img.znxs.vip/study/202504301129812.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="简单使用n8n小案例"/></a><div class="content"><a class="title" href="/2025/04/24/n8n%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8%E6%A1%88%E4%BE%8B/" title="简单使用n8n小案例">简单使用n8n小案例</a><time datetime="2025-04-24T10:00:00.000Z" title="发表于 2025-04-24 18:00:00">2025-04-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/04/24/it%E8%B5%84%E6%BA%90/" title="技术学习资源"><img src="https://img.znxs.vip/study/202504241757453.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="技术学习资源"/></a><div class="content"><a class="title" href="/2025/04/24/it%E8%B5%84%E6%BA%90/" title="技术学习资源">技术学习资源</a><time datetime="2025-04-24T09:54:00.000Z" title="发表于 2025-04-24 17:54:00">2025-04-24</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;2023 - 2026 By znxs</span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.4.0-b1"></script><script src="/js/main.js?v=5.4.0-b1"></script><div class="js-pjax"><script>(() => {
+  let initFn = window.walineFn || null
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+
+  const destroyWaline = ele => ele.destroy()
+
+  const initWaline = (Fn, el = document, path = window.location.pathname) => {
+    const waline = Fn({
+      el: el.querySelector('#waline-wrap'),
+      serverURL: 'https://commons.znxs.vip',
+      pageview: false,
+      dark: 'html[data-theme="dark"]',
+      comment: false,
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || path
+    })
+
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyWaline = () => {
+        destroyWaline(waline)
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+  }
+
+  const loadWaline = (el, path) => {
+    if (initFn) initWaline(initFn, el, path)
+    else {
+      btf.getCSS('https://cdn.jsdelivr.net/npm/@waline/client@3.5.5/dist/waline.min.css')
+        .then(() => import('https://cdn.jsdelivr.net/npm/@waline/client@3.5.5/dist/waline.min.js'))
+        .then(({ init }) => {
+          initFn = init || Waline.init
+          initWaline(initFn, el, path)
+          window.walineFn = initFn
+        })
+    }
+  }
+
+  if (isShuoshuo) {
+    'Waline' === 'Waline'
+      ? window.shuoshuoComment = { loadComment: loadWaline } 
+      : window.loadOtherComment = loadWaline
+    return
+  }
+
+  if ('Waline' === 'Waline' || !false) {
+    if (false) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+    else setTimeout(loadWaline, 0)
+  } else {
+    window.loadOtherComment = loadWaline
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --> <script data-pjax>if(document.getElementById('recent-posts') && location.pathname =='/'){
+    
+    var parent = document.getElementById('recent-posts');
+    var child = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img src="https://img.znxs.vip/study/202502272025707.png" alt="https://img.znxs.vip/study/202502272025707.png"/></div><div class="blog-slider__content"><span class="blog-slider__code">2023-09-05</span><a class="blog-slider__title" href="2023/09/05/项目部署实践/">项目部署实践</a><div class="blog-slider__text">项目部署-实践</div><a class="blog-slider__button" href="2023/09/05/项目部署实践/">详情</a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img src="https://img.znxs.vip/study/202504301131330.jpeg" alt="https://img.znxs.vip/study/202504301131330.jpeg"/></div><div class="blog-slider__content"><span class="blog-slider__code">2024-05-19</span><a class="blog-slider__title" href="2024/05/19/NewIdea/">NewIdeas</a><div class="blog-slider__text">NewIdeas</div><a class="blog-slider__button" href="2024/05/19/NewIdea/">详情</a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img src="https://tse1-mm.cn.bing.net/th/id/OIP-C.R1Bi3fNDyYjLsXdg9OqoIAHaEo?w=315&h=196&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="https://tse1-mm.cn.bing.net/th/id/OIP-C.R1Bi3fNDyYjLsXdg9OqoIAHaEo?w=315&h=196&c=7&r=0&o=5&dpr=1.3&pid=1.7"/></div><div class="blog-slider__content"><span class="blog-slider__code">2023-09-03</span><a class="blog-slider__title" href="2023/09/03/两个设备同步一个git项目/">两个设备同步一个git项目</a><div class="blog-slider__text">两个设备同步一个git项目</div><a class="blog-slider__button" href="2023/09/03/两个设备同步一个git项目/">详情</a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载swiper')
+    parent.insertAdjacentHTML("afterbegin",child)}
+     </script>
+<script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiper.min.js"></script>
+<script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper@0.18/swiper/swiperindex.js"></script>
+<style></style><!-- hexo injector body_end end --></body></html>
