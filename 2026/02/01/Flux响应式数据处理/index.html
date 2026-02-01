@@ -1,0 +1,471 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Flux 响应式流式处理 | znxs</title><meta name="author" content="znxs"><meta name="copyright" content="znxs"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="给AI应用开发准备的打基础的Flux知识点">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flux 响应式流式处理">
+<meta property="og:url" content="http://znxs.vip/2026/02/01/Flux%E5%93%8D%E5%BA%94%E5%BC%8F%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/index.html">
+<meta property="og:site_name" content="znxs">
+<meta property="og:description" content="给AI应用开发准备的打基础的Flux知识点">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.znxs.vip/study/20260201213243302_20260201213243118.jpg">
+<meta property="article:published_time" content="2026-02-01T13:27:06.000Z">
+<meta property="article:modified_time" content="2026-02-01T13:35:37.150Z">
+<meta property="article:author" content="znxs">
+<meta property="article:tag" content="学习">
+<meta property="article:tag" content="技术">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img.znxs.vip/study/20260201213243302_20260201213243118.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Flux 响应式流式处理",
+  "url": "http://znxs.vip/2026/02/01/Flux%E5%93%8D%E5%BA%94%E5%BC%8F%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/",
+  "image": "https://img.znxs.vip/study/20260201213243302_20260201213243118.jpg",
+  "datePublished": "2026-02-01T13:27:06.000Z",
+  "dateModified": "2026-02-01T13:35:37.150Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "znxs",
+      "url": "http://znxs.vip/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="http://znxs.vip/2026/02/01/Flux%E5%93%8D%E5%BA%94%E5%BC%8F%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.4.0-b1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":500,"languages":{"author":"作者: znxs","link":"链接: ","source":"来源: znxs","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Flux 响应式流式处理',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiper.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiperstyle.css"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg" style="background-image: url(/url(https:/img.znxs.vip/study/202408241129726_Stepsister.jpg));"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://img.znxs.vip/znxs/avatar_%E7%A5%9E%E9%87%8C.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">48</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">61</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://img.znxs.vip/study/20260201213243302_20260201213243118.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/favicon.ico" alt="Logo"><span class="site-name">znxs</span></a><a class="nav-page-title" href="/"><span class="site-name">Flux 响应式流式处理</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Flux 响应式流式处理</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-02-01T13:27:06.000Z" title="发表于 2026-02-01 21:27:06">2026-02-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-02-01T13:35:37.150Z" title="更新于 2026-02-01 21:35:37">2026-02-01</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">2.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>7分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>简单学习参考：<a target="_blank" rel="noopener" href="https://juejin.cn/post/7515695400671805491">Spring WebFlux：响应式编程的“未来战士”还是“花架子”？</a></p>
+<p>Spring 官网：<a target="_blank" rel="noopener" href="https://docs.spring.io/spring-framework/reference/web-reactive.html">Web on Reactive Stack</a></p>
+<h1 id="Flux-响应式流式处理"><a href="#Flux-响应式流式处理" class="headerlink" title="Flux 响应式流式处理"></a>Flux 响应式流式处理</h1><p>响应式编程是一种面向数据流和变化传播的编程范式。这意味着可以在编程语言中很方便地表达静态或动态的数据流，而相关的计算模型会自动将变化的值通过数据流进行传播。</p>
+<p>响应式编程基于reactor（Reactor 是一个运行在 Java8 之上的响应式框架）的思想，当你做一个带有一定延迟的才能够返回的io操作时，不会阻塞，而是立刻返回一个流，并且订阅这个流，当这个流上产生了返回数据，可以立刻得到通知并调用回调函数处理数据。</p>
+<p>电子表格程序就是响应式编程的一个例子。单元格可以包含字面值或类似”&#x3D;B1+C1”的公式，而包含公式的单元格的值会依据其他单元格的值的变化而变化。</p>
+<p>响应式传播核心特点之一：变化传播：一个单元格变化之后，会像多米诺骨牌一样，导致直接和间接引用它的其他单元格均发生相应变化。</p>
+<h2 id="响应流的特点"><a href="#响应流的特点" class="headerlink" title="响应流的特点"></a>响应流的特点</h2><p>要搞清楚这两个概念，必须说一下响应流规范。它是响应式编程的基石。他具有以下特点：</p>
+<ul>
+<li>响应流必须是无阻塞的。</li>
+<li>响应流必须是一个数据流。</li>
+<li>它必须可以异步执行。</li>
+<li>并且它也应该能够处理背压</li>
+</ul>
+<h2 id="函数编程"><a href="#函数编程" class="headerlink" title="函数编程"></a>函数编程</h2><p>函数编程的分类</p>
+<h2 id="基础Lambda表达式-1-20"><a href="#基础Lambda表达式-1-20" class="headerlink" title="基础Lambda表达式 (1-20)"></a>基础Lambda表达式 (1-20)</h2><ol>
+<li><p>编写一个Lambda表达式，接受两个整数并返回它们的和</p>
+</li>
+<li><p>编写一个Lambda表达式，判断字符串是否为空</p>
+</li>
+<li><p>使用Lambda实现Runnable接口</p>
+</li>
+<li><p>使用Lambda实现Comparator接口排序字符串</p>
+</li>
+<li><p>使用Lambda实现Predicate接口过滤数字</p>
+</li>
+<li><p>使用Lambda实现Function接口进行字符串转换</p>
+</li>
+<li><p>使用Lambda实现Consumer接口打印元素</p>
+</li>
+<li><p>使用Lambda实现Supplier接口生成随机数</p>
+</li>
+<li><p>使用方法引用调用静态方法</p>
+</li>
+<li><p>使用方法引用调用实例方法</p>
+</li>
+<li><p>使用方法引用调用构造函数</p>
+</li>
+<li><p>使用Lambda实现BiFunction接口</p>
+</li>
+<li><p>使用Lambda实现UnaryOperator接口</p>
+</li>
+<li><p>使用Lambda实现BinaryOperator接口</p>
+</li>
+<li><p>组合多个Predicate进行复杂条件判断</p>
+</li>
+<li><p>组合多个Function进行链式转换</p>
+</li>
+<li><p>使用andThen组合Function</p>
+</li>
+<li><p>使用compose组合Function</p>
+</li>
+<li><p>使用Optional处理可能为null的值</p>
+</li>
+<li><p>使用Optional的map和flatMap方法</p>
+</li>
+</ol>
+<h2 id="Stream基础操作-21-40"><a href="#Stream基础操作-21-40" class="headerlink" title="Stream基础操作 (21-40)"></a>Stream基础操作 (21-40)</h2><ol>
+<li>从集合创建Stream并遍历</li>
+<li>使用filter过滤偶数</li>
+<li>使用map将字符串转换为大写</li>
+<li>使用flatMap展开嵌套集合</li>
+<li>使用distinct去重</li>
+<li>使用sorted排序</li>
+<li>使用limit限制元素数量</li>
+<li>使用skip跳过元素</li>
+<li>使用peek查看中间结果</li>
+<li>使用forEach遍历Stream</li>
+<li>使用toArray将Stream转换为数组</li>
+<li>使用reduce计算总和</li>
+<li>使用collect收集到List</li>
+<li>使用collect收集到Set</li>
+<li>使用collect收集到Map</li>
+<li>使用collect连接字符串</li>
+<li>使用count统计元素数量</li>
+<li>使用min查找最小值</li>
+<li>使用max查找最大值</li>
+<li>使用findFirst获取第一个元素</li>
+</ol>
+<h2 id="Stream高级操作-41-60"><a href="#Stream高级操作-41-60" class="headerlink" title="Stream高级操作 (41-60)"></a>Stream高级操作 (41-60)</h2><ol>
+<li>使用anyMatch判断是否存在满足条件的元素</li>
+<li>使用allMatch判断所有元素是否满足条件</li>
+<li>使用noneMatch判断没有元素满足条件</li>
+<li>使用findAny获取任意元素</li>
+<li>使用groupingBy分组</li>
+<li>使用partitioningBy分区</li>
+<li>使用mapping在collect中转换</li>
+<li>使用filtering在collect中过滤</li>
+<li>使用flatMapping在collect中展开</li>
+<li>使用summingInt计算总和</li>
+<li>使用averagingDouble计算平均值</li>
+<li>使用summarizingInt获取统计信息</li>
+<li>使用joining连接字符串</li>
+<li>使用reducing进行归约操作</li>
+<li>使用collectingAndThen在收集后转换</li>
+<li>使用toMap收集到Map并处理键冲突</li>
+<li>使用toConcurrentMap收集到并发Map</li>
+<li>使用toCollection收集到特定集合</li>
+<li>使用toUnmodifiableList收集到不可变列表</li>
+<li>使用toUnmodifiableSet收集到不可变集合</li>
+</ol>
+<h2 id="数值流和并行流-61-75"><a href="#数值流和并行流-61-75" class="headerlink" title="数值流和并行流 (61-75)"></a>数值流和并行流 (61-75)</h2><ol>
+<li>使用IntStream处理基本类型</li>
+<li>使用LongStream处理long类型</li>
+<li>使用DoubleStream处理double类型</li>
+<li>使用range创建数值范围</li>
+<li>使用rangeClosed创建包含边界的范围</li>
+<li>使用mapToInt转换为数值流</li>
+<li>使用boxed将数值流转换为对象流</li>
+<li>使用sum计算数值流总和</li>
+<li>使用average计算数值流平均值</li>
+<li>使用summaryStatistics获取数值统计</li>
+<li>使用parallel创建并行流</li>
+<li>使用sequential切换为顺序流</li>
+<li>使用unordered优化并行流性能</li>
+<li>在并行流中使用线程安全的收集器</li>
+<li>处理并行流中的竞态条件</li>
+</ol>
+<h2 id="高级Stream操作-76-100"><a href="#高级Stream操作-76-100" class="headerlink" title="高级Stream操作 (76-100)"></a>高级Stream操作 (76-100)</h2><ol>
+<li>使用Stream.iterate创建无限流</li>
+<li>使用Stream.generate创建无限流</li>
+<li>使用Stream.concat连接多个流</li>
+<li>使用takeWhile在条件满足时获取元素</li>
+<li>使用dropWhile在条件满足时丢弃元素</li>
+<li>使用ofNullable创建可能为空的流</li>
+<li>使用empty创建空流</li>
+<li>使用builder构建流</li>
+<li>使用Stream.of创建流</li>
+<li>处理流的异常</li>
+<li>使用自定义收集器</li>
+<li>使用Spliterator控制流的分割</li>
+<li>使用流的短路操作优化性能</li>
+<li>在流操作中使用final变量</li>
+<li>使用流处理文件I&#x2F;O</li>
+<li>使用流处理数据库结果</li>
+<li>使用流进行递归操作</li>
+<li>使用流实现分页查询</li>
+<li>使用流进行数据转换和清洗</li>
+<li>使用流进行聚合计算</li>
+<li>使用流实现复杂的数据分组</li>
+<li>使用流进行性能测试和比较</li>
+<li>使用流处理JSON数据</li>
+<li>使用流与Optional组合处理复杂数据</li>
+<li>使用流实现函数式设计模式</li>
+</ol>
+<h2 id="Java-Flux和Mono-100道编程题目"><a href="#Java-Flux和Mono-100道编程题目" class="headerlink" title="Java Flux和Mono 100道编程题目"></a>Java Flux和Mono 100道编程题目</h2><h3 id="基础创建与转换-1-20"><a href="#基础创建与转换-1-20" class="headerlink" title="基础创建与转换 (1-20)"></a>基础创建与转换 (1-20)</h3><p>创建一个包含”Hello”, “World”的Flux</p>
+<p>创建一个空的Flux</p>
+<p>从数组创建Flux  </p>
+<p>从Stream创建Flux </p>
+<p>创建包含单个元素的Mono </p>
+<p>创建空的Mono</p>
+<p>从Optional创建Mono </p>
+<p>将Flux转换为List</p>
+<p>将Mono转换为Flux</p>
+<p>将Flux转换为Mono（取第一个元素）</p>
+<p>使用justOrEmpty处理null值</p>
+<p>使用defer延迟创建Mono</p>
+<p>使用fromCallable创建Mono</p>
+<p>使用fromRunnable创建Mono</p>
+<p>使用fromSupplier创建Mono</p>
+<p>创建范围数字的Flux</p>
+<p>使用generate创建无限序列</p>
+<p>使用create创建自定义Flux</p>
+<p>使用push创建单线程Flux</p>
+<p>使用interval创建定时序列</p>
+<h3 id="过滤与映射-21-40"><a href="#过滤与映射-21-40" class="headerlink" title="过滤与映射 (21-40)"></a>过滤与映射 (21-40)</h3><p>过滤Flux中的偶数</p>
+<p>使用distinct去重</p>
+<p>使用distinctUntilChanged去重连续重复</p>
+<p>使用filterWhen进行异步过滤</p>
+<p>使用map进行元素转换</p>
+<p>使用flatMap展开嵌套结构</p>
+<p>使用flatMapSequential保持顺序展开</p>
+<p>使用concatMap顺序执行flatMap</p>
+<p>使用switchOnFirst根据第一个元素处理</p>
+<p>使用handle自定义元素处理</p>
+<p>使用index添加索引</p>
+<p>使用timestamp添加时间戳</p>
+<p>使用elapsed计算时间间隔</p>
+<p>使用cast进行类型转换</p>
+<p>使用ofType过滤类型</p>
+<p>使用scan进行累积计算</p>
+<p>使用reduce进行归约</p>
+<p>使用collectList收集到List</p>
+<p>使用collectMap收集到Map</p>
+<p>使用collectMultimap收集到Multimap</p>
+<h3 id="组合操作-41-60"><a href="#组合操作-41-60" class="headerlink" title="组合操作 (41-60)"></a>组合操作 (41-60)</h3><p>使用concat连接两个Flux</p>
+<p>使用merge合并两个Flux</p>
+<p>使用zip组合多个Flux</p>
+<p>使用combineLatest组合最新值</p>
+<p>使用firstWithSignal选择第一个响应的Flux</p>
+<p>使用firstWithValue选择第一个有值的Flux</p>
+<p>使用then切换为另一个Publisher</p>
+<p>使用thenMany切换为另一个Flux</p>
+<p>使用thenEmpty切换为空Mono</p>
+<p>使用thenReturn返回固定值</p>
+<p>使用repeat重复序列</p>
+<p>使用repeatWhen条件重复</p>
+<p>使用retry重试操作</p>
+<p>使用retryWhen条件重试</p>
+<p>使用timeout设置超时</p>
+<p>使用delayElements延迟发射</p>
+<p>使用delaySubscription延迟订阅</p>
+<p>使用buffer缓冲元素</p>
+<p>使用window窗口化处理</p>
+<p>使用groupBy分组处理</p>
+<h3 id="错误处理-61-75"><a href="#错误处理-61-75" class="headerlink" title="错误处理 (61-75)"></a>错误处理 (61-75)</h3><p>使用onErrorReturn提供默认值</p>
+<p>使用onErrorResume回退到另一个Publisher</p>
+<p>使用onErrorContinue继续处理</p>
+<p>使用onErrorMap转换错误类型</p>
+<p>使用doOnError执行副作用</p>
+<p>使用doFinally执行最终操作</p>
+<p>使用using管理资源</p>
+<p>使用onErrorStop停止错误传播</p>
+<p>使用retryBackoff指数退避重试</p>
+<p>使用timeout回退到备用Flux</p>
+<p>使用transformDeferred延迟转换</p>
+<p>使用checkpoint添加调试点</p>
+<p>使用log记录流事件</p>
+<p>使用doOnEach处理每个信号</p>
+<p>使用metrics收集指标</p>
+<h3 id="高级特性-76-100"><a href="#高级特性-76-100" class="headerlink" title="高级特性 (76-100)"></a>高级特性 (76-100)</h3><p>实现自定义Publisher</p>
+<p>使用Schedulers控制执行线程</p>
+<p>使用publishOn切换下游线程</p>
+<p>使用subscribeOn指定订阅线程</p>
+<p>使用parallel进行并行处理</p>
+<p>使用runOn指定并行线程</p>
+<p>实现背压控制</p>
+<p>使用limitRate限制请求速率</p>
+<p>使用onBackpressureBuffer处理背压</p>
+<p>使用onBackpressureDrop丢弃超量元素</p>
+<p>使用onBackpressureLatest保留最新</p>
+<p>使用context传递上下文</p>
+<p>使用transform操作符组合</p>
+<p>使用compose操作符组合</p>
+<p>实现热序列（Hot Sequence）</p>
+<p>使用cache缓存结果</p>
+<p>使用replay重放历史数据</p>
+<p>使用connect手动连接ConnectableFlux</p>
+<p>使用autoConnect自动连接</p>
+<p>使用refCount引用计数</p>
+<p>实现自定义Processor</p>
+<p>使用blockFirst阻塞获取第一个元素</p>
+<p>使用blockLast阻塞获取最后一个元素</p>
+<p>使用toIterable转换为Iterable</p>
+<p>使用toStream转换为Stream</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://znxs.vip">znxs</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://znxs.vip/2026/02/01/Flux%E5%93%8D%E5%BA%94%E5%BC%8F%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/">http://znxs.vip/2026/02/01/Flux%E5%93%8D%E5%BA%94%E5%BC%8F%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://znxs.vip" target="_blank">znxs</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a><a class="post-meta__tags" href="/tags/%E6%8A%80%E6%9C%AF/">技术</a></div><div class="post-share"><div class="social-share" data-image="https://img.znxs.vip/study/20260201213243302_20260201213243118.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.4/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.4/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2025/12/24/%E7%BB%93%E5%B7%B4%E5%81%9C%E8%AF%8D%E5%BA%93/" title="结巴停词库"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">结巴停词库</div></div><div class="info-2"><div class="info-item-1">用于分词器的停词，通用停词</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2024/09/11/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%8A%80%E6%9C%AF/" title="微服务技术"><img class="cover" src="https://img.znxs.vip/study/springcloud_avatar.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="fas fa-history fa-fw"></i> 2025-12-25</div><div class="info-item-2">微服务技术</div></div><div class="info-2"><div class="info-item-1">spring cloud技术学习</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://img.znxs.vip/znxs/avatar_%E7%A5%9E%E9%87%8C.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">znxs</div><div class="author-info-description">落子无悔</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">48</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">61</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/znxs"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Flux-%E5%93%8D%E5%BA%94%E5%BC%8F%E6%B5%81%E5%BC%8F%E5%A4%84%E7%90%86"><span class="toc-number">1.</span> <span class="toc-text">Flux 响应式流式处理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%93%8D%E5%BA%94%E6%B5%81%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-number">1.1.</span> <span class="toc-text">响应流的特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E7%BC%96%E7%A8%8B"><span class="toc-number">1.2.</span> <span class="toc-text">函数编程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F-1-20"><span class="toc-number">1.3.</span> <span class="toc-text">基础Lambda表达式 (1-20)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stream%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C-21-40"><span class="toc-number">1.4.</span> <span class="toc-text">Stream基础操作 (21-40)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stream%E9%AB%98%E7%BA%A7%E6%93%8D%E4%BD%9C-41-60"><span class="toc-number">1.5.</span> <span class="toc-text">Stream高级操作 (41-60)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E5%80%BC%E6%B5%81%E5%92%8C%E5%B9%B6%E8%A1%8C%E6%B5%81-61-75"><span class="toc-number">1.6.</span> <span class="toc-text">数值流和并行流 (61-75)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AB%98%E7%BA%A7Stream%E6%93%8D%E4%BD%9C-76-100"><span class="toc-number">1.7.</span> <span class="toc-text">高级Stream操作 (76-100)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-Flux%E5%92%8CMono-100%E9%81%93%E7%BC%96%E7%A8%8B%E9%A2%98%E7%9B%AE"><span class="toc-number">1.8.</span> <span class="toc-text">Java Flux和Mono 100道编程题目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E5%88%9B%E5%BB%BA%E4%B8%8E%E8%BD%AC%E6%8D%A2-1-20"><span class="toc-number">1.8.1.</span> <span class="toc-text">基础创建与转换 (1-20)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%87%E6%BB%A4%E4%B8%8E%E6%98%A0%E5%B0%84-21-40"><span class="toc-number">1.8.2.</span> <span class="toc-text">过滤与映射 (21-40)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E5%90%88%E6%93%8D%E4%BD%9C-41-60"><span class="toc-number">1.8.3.</span> <span class="toc-text">组合操作 (41-60)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86-61-75"><span class="toc-number">1.8.4.</span> <span class="toc-text">错误处理 (61-75)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7-76-100"><span class="toc-number">1.8.5.</span> <span class="toc-text">高级特性 (76-100)</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/02/01/Flux%E5%93%8D%E5%BA%94%E5%BC%8F%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/" title="Flux 响应式流式处理"><img src="https://img.znxs.vip/study/20260201213243302_20260201213243118.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Flux 响应式流式处理"/></a><div class="content"><a class="title" href="/2026/02/01/Flux%E5%93%8D%E5%BA%94%E5%BC%8F%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/" title="Flux 响应式流式处理">Flux 响应式流式处理</a><time datetime="2026-02-01T13:27:06.000Z" title="发表于 2026-02-01 21:27:06">2026-02-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/12/24/%E7%BB%93%E5%B7%B4%E5%81%9C%E8%AF%8D%E5%BA%93/" title="结巴停词库">结巴停词库</a><time datetime="2025-12-24T06:20:07.000Z" title="发表于 2025-12-24 14:20:07">2025-12-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/05/07/RAG-%E7%9F%A5%E8%AF%86%E5%BA%93%E6%97%A0%E6%B3%95%E5%91%BD%E4%B8%AD/" title="RAG 知识库无法命中"><img src="https://img-blog.csdnimg.cn/img_convert/ea3f6f8399f3fdd12e3321434e792b66.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="RAG 知识库无法命中"/></a><div class="content"><a class="title" href="/2025/05/07/RAG-%E7%9F%A5%E8%AF%86%E5%BA%93%E6%97%A0%E6%B3%95%E5%91%BD%E4%B8%AD/" title="RAG 知识库无法命中">RAG 知识库无法命中</a><time datetime="2025-05-07T11:17:32.000Z" title="发表于 2025-05-07 19:17:32">2025-05-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/04/30/SpringBoot%20%E6%95%B4%E5%90%88AI/" title="SpringBoot整合AI"><img src="https://img.znxs.vip/study/202504301108692.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SpringBoot整合AI"/></a><div class="content"><a class="title" href="/2025/04/30/SpringBoot%20%E6%95%B4%E5%90%88AI/" title="SpringBoot整合AI">SpringBoot整合AI</a><time datetime="2025-04-30T03:09:06.000Z" title="发表于 2025-04-30 11:09:06">2025-04-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/04/24/n8n%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8%E6%A1%88%E4%BE%8B/" title="简单使用n8n小案例"><img src="https://img.znxs.vip/study/202504301129812.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="简单使用n8n小案例"/></a><div class="content"><a class="title" href="/2025/04/24/n8n%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8%E6%A1%88%E4%BE%8B/" title="简单使用n8n小案例">简单使用n8n小案例</a><time datetime="2025-04-24T10:00:00.000Z" title="发表于 2025-04-24 18:00:00">2025-04-24</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;2023 - 2026 By znxs</span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.4.0-b1"></script><script src="/js/main.js?v=5.4.0-b1"></script><div class="js-pjax"><script>(() => {
+  let initFn = window.walineFn || null
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+
+  const destroyWaline = ele => ele.destroy()
+
+  const initWaline = (Fn, el = document, path = window.location.pathname) => {
+    const waline = Fn({
+      el: el.querySelector('#waline-wrap'),
+      serverURL: 'https://commons.znxs.vip',
+      pageview: false,
+      dark: 'html[data-theme="dark"]',
+      comment: false,
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || path
+    })
+
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyWaline = () => {
+        destroyWaline(waline)
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+  }
+
+  const loadWaline = (el, path) => {
+    if (initFn) initWaline(initFn, el, path)
+    else {
+      btf.getCSS('https://cdn.jsdelivr.net/npm/@waline/client@3.5.5/dist/waline.min.css')
+        .then(() => import('https://cdn.jsdelivr.net/npm/@waline/client@3.5.5/dist/waline.min.js'))
+        .then(({ init }) => {
+          initFn = init || Waline.init
+          initWaline(initFn, el, path)
+          window.walineFn = initFn
+        })
+    }
+  }
+
+  if (isShuoshuo) {
+    'Waline' === 'Waline'
+      ? window.shuoshuoComment = { loadComment: loadWaline } 
+      : window.loadOtherComment = loadWaline
+    return
+  }
+
+  if ('Waline' === 'Waline' || !false) {
+    if (false) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+    else setTimeout(loadWaline, 0)
+  } else {
+    window.loadOtherComment = loadWaline
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --> <script data-pjax>if(document.getElementById('recent-posts') && location.pathname =='/'){
+    
+    var parent = document.getElementById('recent-posts');
+    var child = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img src="https://img.znxs.vip/study/202502272025707.png" alt="https://img.znxs.vip/study/202502272025707.png"/></div><div class="blog-slider__content"><span class="blog-slider__code">2023-09-05</span><a class="blog-slider__title" href="2023/09/05/项目部署实践/">项目部署实践</a><div class="blog-slider__text">项目部署-实践</div><a class="blog-slider__button" href="2023/09/05/项目部署实践/">详情</a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img src="https://img.znxs.vip/study/202504301131330.jpeg" alt="https://img.znxs.vip/study/202504301131330.jpeg"/></div><div class="blog-slider__content"><span class="blog-slider__code">2024-05-19</span><a class="blog-slider__title" href="2024/05/19/NewIdea/">NewIdeas</a><div class="blog-slider__text">NewIdeas</div><a class="blog-slider__button" href="2024/05/19/NewIdea/">详情</a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img src="https://tse1-mm.cn.bing.net/th/id/OIP-C.R1Bi3fNDyYjLsXdg9OqoIAHaEo?w=315&h=196&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="https://tse1-mm.cn.bing.net/th/id/OIP-C.R1Bi3fNDyYjLsXdg9OqoIAHaEo?w=315&h=196&c=7&r=0&o=5&dpr=1.3&pid=1.7"/></div><div class="blog-slider__content"><span class="blog-slider__code">2023-09-03</span><a class="blog-slider__title" href="2023/09/03/两个设备同步一个git项目/">两个设备同步一个git项目</a><div class="blog-slider__text">两个设备同步一个git项目</div><a class="blog-slider__button" href="2023/09/03/两个设备同步一个git项目/">详情</a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载swiper')
+    parent.insertAdjacentHTML("afterbegin",child)}
+     </script>
+<script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiper.min.js"></script>
+<script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper@0.18/swiper/swiperindex.js"></script>
+<style></style><!-- hexo injector body_end end --></body></html>
